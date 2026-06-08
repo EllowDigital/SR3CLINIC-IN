@@ -8,13 +8,17 @@
   }
 
   body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background-color: #F9FAFB;
-    color: #1A1B26;
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: #f9fafb;
+    color: #1a1b26;
   }
 
-  h1, h2, h3, h4, h5 {
-    font-family: 'Playfair Display', Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Playfair Display", Georgia, serif;
   }
 }
 
@@ -27,11 +31,11 @@
   }
 
   .gold-gradient {
-    background: linear-gradient(135deg, #D4A017 0%, #F0C040 50%, #D4A017 100%);
+    background: linear-gradient(135deg, #d4a017 0%, #f0c040 50%, #d4a017 100%);
   }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, #D4A017 0%, #F0C040 100%);
+    background: linear-gradient(135deg, #d4a017 0%, #f0c040 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -44,7 +48,11 @@
   }
 
   @keyframes ticker {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }

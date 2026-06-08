@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -23,7 +23,7 @@ export default function Hero() {
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, #D4A017 1px, transparent 0)`,
-          backgroundSize: '44px 44px',
+          backgroundSize: "44px 44px",
         }}
       />
 
@@ -49,7 +49,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.25 }}
           className="font-serif text-4xl sm:text-5xl md:text-[64px] text-white leading-tight mb-5"
         >
-          World-Class Healthcare,{' '}
+          World-Class Healthcare,{" "}
           <span className="text-gold-gradient">Delivered with Compassion.</span>
         </motion.h1>
 
@@ -104,12 +104,14 @@ export default function Hero() {
           className="mt-16 grid grid-cols-3 gap-6 max-w-lg mx-auto"
         >
           {[
-            { value: '5+', label: 'Specialists' },
-            { value: '10k+', label: 'Patients Treated' },
-            { value: '20+', label: 'Years Experience' },
+            { value: "5+", label: "Specialists" },
+            { value: "10k+", label: "Patients Treated" },
+            { value: "20+", label: "Years Experience" },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-serif text-3xl text-gold font-bold">{s.value}</p>
+              <p className="font-serif text-3xl text-gold font-bold">
+                {s.value}
+              </p>
               <p className="text-white/50 text-xs font-sans mt-1">{s.label}</p>
             </div>
           ))}
@@ -123,10 +125,13 @@ export default function Hero() {
         transition={{ delay: 1.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8 }}
+        >
           <ChevronDown className="w-6 h-6 text-gold/50" />
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

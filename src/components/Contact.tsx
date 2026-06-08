@@ -1,24 +1,30 @@
-import { motion } from 'framer-motion'
-import { useInView } from '../hooks/useInView'
-import { MapPin, Phone, Info } from 'lucide-react'
-import { useState } from 'react'
+import { motion } from "framer-motion";
+import { useInView } from "../hooks/useInView";
+import { MapPin, Phone, Info } from "lucide-react";
+import { useState } from "react";
 
-const departments = ['ENT', 'General Surgery', 'Obstetrics & Gynaecology', 'Physiotherapy', 'Dietitian']
+const departments = [
+  "ENT",
+  "General Surgery",
+  "Obstetrics & Gynaecology",
+  "Physiotherapy",
+  "Dietitian",
+];
 
 export default function Contact() {
-  const [ref, inView] = useInView()
-  const [submitted, setSubmitted] = useState(false)
+  const [ref, inView] = useInView();
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
-    name: '',
-    phone: '',
-    date: '',
-    department: '',
-  })
+    name: "",
+    phone: "",
+    date: "",
+    department: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
+    e.preventDefault();
+    setSubmitted(true);
+  };
 
   return (
     <section id="contact" className="py-28 bg-white" ref={ref}>
@@ -30,13 +36,17 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <p className="text-gold tracking-[0.3em] text-xs font-sans uppercase mb-4">Reach Us</p>
+          <p className="text-gold tracking-[0.3em] text-xs font-sans uppercase mb-4">
+            Reach Us
+          </p>
           <h2 className="font-serif text-4xl md:text-5xl text-navy leading-tight mb-4">
-            Contact &amp; <span className="text-gold-gradient">Appointments</span>
+            Contact &amp;{" "}
+            <span className="text-gold-gradient">Appointments</span>
           </h2>
           <div className="w-16 h-0.5 gold-gradient mx-auto mb-5" />
           <p className="font-sans text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-            We are conveniently located on Faizabad Road, Lucknow. Walk in or call us to book your consultation.
+            We are conveniently located on Faizabad Road, Lucknow. Walk in or
+            call us to book your consultation.
           </p>
         </motion.div>
 
@@ -55,9 +65,12 @@ export default function Contact() {
                   <MapPin className="w-4 h-4 text-gold" />
                 </div>
                 <div>
-                  <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">Address</p>
+                  <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
+                    Address
+                  </p>
                   <p className="font-sans text-navy text-sm font-medium leading-relaxed">
-                    Shivbalak Market, Opp. Mahindra Showroom,<br />
+                    Shivbalak Market, Opp. Mahindra Showroom,
+                    <br />
                     Tiwariganj, Faizabad Road, Lucknow
                   </p>
                 </div>
@@ -68,11 +81,19 @@ export default function Contact() {
                   <Phone className="w-4 h-4 text-gold" />
                 </div>
                 <div>
-                  <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">Phone</p>
-                  <a href="tel:+919369643922" className="block font-sans text-navy text-sm font-medium hover:text-gold transition-colors">
+                  <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
+                    Phone
+                  </p>
+                  <a
+                    href="tel:+919369643922"
+                    className="block font-sans text-navy text-sm font-medium hover:text-gold transition-colors"
+                  >
                     +91 9369643922
                   </a>
-                  <a href="tel:+918858580214" className="block font-sans text-navy text-sm font-medium hover:text-gold transition-colors">
+                  <a
+                    href="tel:+918858580214"
+                    className="block font-sans text-navy text-sm font-medium hover:text-gold transition-colors"
+                  >
                     +91 8858580214
                   </a>
                 </div>
@@ -83,8 +104,12 @@ export default function Contact() {
                   <Info className="w-4 h-4 text-gold" />
                 </div>
                 <div>
-                  <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">Nearby Landmarks</p>
-                  <p className="font-sans text-navy text-sm">BBD · Polytechnic · Kamta Chauraha</p>
+                  <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
+                    Nearby Landmarks
+                  </p>
+                  <p className="font-sans text-navy text-sm">
+                    BBD · Polytechnic · Kamta Chauraha
+                  </p>
                 </div>
               </div>
             </div>
@@ -96,7 +121,7 @@ export default function Contact() {
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.4793!2d81.0458!3d26.8800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTHVja25vdw!5e0!3m2!1sen!2sin!4v1688000000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: 'grayscale(70%) contrast(1.05)' }}
+                style={{ border: 0, filter: "grayscale(70%) contrast(1.05)" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -115,9 +140,12 @@ export default function Contact() {
                 <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-6">
                   <Phone className="w-8 h-8 text-gold" />
                 </div>
-                <h3 className="font-serif text-2xl text-navy mb-3">Request Received</h3>
+                <h3 className="font-serif text-2xl text-navy mb-3">
+                  Request Received
+                </h3>
                 <p className="font-sans text-gray-500 text-sm leading-relaxed">
-                  Thank you. Our team will call you back within one business hour to confirm your appointment.
+                  Thank you. Our team will call you back within one business
+                  hour to confirm your appointment.
                 </p>
               </div>
             ) : (
@@ -125,8 +153,12 @@ export default function Contact() {
                 onSubmit={handleSubmit}
                 className="bg-clinical-white rounded-2xl p-8 border border-gray-100 shadow-sm space-y-5"
               >
-                <h3 className="font-serif text-2xl text-navy mb-1">Book an Appointment</h3>
-                <p className="font-sans text-gray-400 text-xs mb-4">Fill the form — we'll call you back promptly.</p>
+                <h3 className="font-serif text-2xl text-navy mb-1">
+                  Book an Appointment
+                </h3>
+                <p className="font-sans text-gray-400 text-xs mb-4">
+                  Fill the form — we'll call you back promptly.
+                </p>
 
                 <div>
                   <label className="block font-sans text-gray-600 text-xs mb-1.5 font-medium uppercase tracking-wide">
@@ -150,7 +182,9 @@ export default function Contact() {
                     type="tel"
                     placeholder="+91 XXXXX XXXXX"
                     value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, phone: e.target.value })
+                    }
                     required
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 font-sans text-sm text-navy placeholder-gray-400 focus:outline-none focus:border-gold transition-colors bg-white"
                   />
@@ -175,13 +209,17 @@ export default function Contact() {
                   </label>
                   <select
                     value={form.department}
-                    onChange={(e) => setForm({ ...form, department: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, department: e.target.value })
+                    }
                     required
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 font-sans text-sm text-navy focus:outline-none focus:border-gold transition-colors bg-white"
                   >
                     <option value="">Select a department…</option>
                     {departments.map((d) => (
-                      <option key={d} value={d}>{d}</option>
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -198,5 +236,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
