@@ -1,0 +1,21 @@
+This project is a premium, ultra-luxury healthcare website for "SR³ ENT & SURGICAL CENTRE". The stack is React (Vite) + Tailwind CSS + Framer Motion (for animations) + Lucide React (for icons).
+
+Design System, Theming & Branding:
+
+Brand Alignment: The UI must complement the official circular logo, which features a dark background, crisp white text, and vibrant yellow/gold medical iconography (ENT head profile and surgeon).
+
+Colors: Use a deep dark navy/charcoal (e.g., #1A1B26 or #0A192F) derived from the logo's background for dark sections and footers. Use crisp white and soft clinical gray for content backgrounds. Use the distinct vibrant yellow/gold from the logo's accent graphics for primary buttons, active tabs, and CTAs to create strong visual consistency.
+
+Typography: Use an elegant, distinguished serif font for all headings, section titles, and doctor names. Use a clean, modern sans-serif for body text, paragraphs, and medical qualifications.
+
+UI/UX Vibe: The site must look like a world-class international private clinic—clean, spacious, and trust-inspiring. Use glassmorphism for the navbar and soft shadows for doctor profile cards. Iconography across the site (via Lucide React) should be clean and line-based to match the logo's aesthetic.
+
+Coding Conventions:
+
+Keep components modular within the src/components/ directory.
+
+Ensure all layouts are strictly mobile-responsive using Tailwind utility classes.
+
+All clinic data (doctors, services, contact info) should be cleanly hardcoded within the frontend components. No backend or external database connection is required.
+
+Maintain smooth, premium fade-in animations on scroll and subtle hover states (like slightly lifting cards) across the app.

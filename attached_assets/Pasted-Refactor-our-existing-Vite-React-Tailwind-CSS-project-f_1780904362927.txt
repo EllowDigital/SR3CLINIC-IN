@@ -1,0 +1,45 @@
+Refactor our existing Vite + React + Tailwind CSS project for "SR³ ENT & SURGICAL CENTRE" from a single-page layout into a comprehensive, multi-page application. 
+
+**Core Technical Requirements:**
+1. Install `react-router-dom` for multi-page routing.
+2. Maintain `lucide-react` for icons and `framer-motion` for animations.
+3. Keep the established luxury color palette: Dark navy/charcoal (#1A1B26), crisp white, clinical gray, and vibrant yellow/gold accents.
+4. Refactor the application structure. Create a layout wrapper that includes the Navbar and Footer, so they persist across all pages. 
+5. Set up the following routes in `App.jsx`: `/` (Home), `/about` (About Us), `/specialities` (Specialities & Doctors), `/patient-guide` (Patient Info & Insurance), and `/contact` (Contact).
+
+**Global Addition - Indian Context:**
+- Create a `FloatingWhatsApp.jsx` component: A fixed, floating WhatsApp icon at the bottom right of the screen across all pages for instant patient inquiries.
+
+**Page 1: Home (`src/pages/Home.jsx`)**
+- **Hero:** Keep the current luxury Hero section. Ensure background images reflect modern Indian healthcare facilities (use Unsplash keywords: "modern hospital India", "Indian doctor").
+- **Quick Stats Bar:** Add a trust banner below the Hero: "15+ Years of Excellence | 10,000+ Happy Patients | Cashless Facility Available".
+- **Abbreviated Services:** Show a condensed version of the Services tabs.
+- **Testimonials:** Add a new section highlighting patient success stories (crucial for Indian trust building). Use generic Indian names for placeholders (e.g., "Rahul S.", "Priya V.").
+
+**Page 2: About Us (`src/pages/About.jsx`)**
+- **Introduction:** A distinguished section detailing the legacy and mission of SR³ Care & Cure.
+- **Director's Message:** A blockquote section with a placeholder photo for the lead doctor/director.
+- **Infrastructure Gallery:** A high-quality masonry grid showing state-of-the-art OT (Operation Theatre), private wards, and advanced medical equipment.
+
+**Page 3: Specialities & Doctors (`src/pages/Specialities.jsx`)**
+- Combine and expand the previous `Specialists.jsx` and `Services.jsx` components here.
+- **Doctors Grid:** Display the doctors (Dr. Samvartika, Dr. R.K. Vishwakarma, Dr. Madhu Agrawal, Dr. Leena Verma, Dr. Induja Dixit) with high emphasis on their degrees (M.B.B.S., MS, D.L.O, etc.) and Registration Numbers, as credentials are highly scrutinized by Indian patients.
+- **Detailed Services:** List the comprehensive services for ENT, General Surgery, Gynaecology, and Allied Health using clear, interactive accordions or a vertical tab layout.
+
+**Page 4: Patient Guide & Insurance (`src/pages/PatientGuide.jsx`)**
+*This is essential for the Indian healthcare market.*
+- **Admission Process:** Step-by-step timeline of how admissions work.
+- **Insurance & TPA:** A prominent section highlighting "Cashless Treatment & TPA Tie-ups". Include a grid of placeholder logos for major Indian health insurance providers (e.g., Star Health, HDFC ERGO, Bajaj Allianz - use text placeholders or generic shield icons).
+- **FAQ:** An accordion section answering common questions (e.g., "Do I need an appointment for OPD?", "What documents are required for cashless surgery?").
+
+**Page 5: Contact (`src/pages/ContactPage.jsx`)**
+- Expand the current `Contact.jsx` component into a full page.
+- Keep the two-column layout. 
+- Left Column: Address (Shivbalak Market, Tiwariganj, Faizabad Road, Lucknow), Phone Numbers (+91 9369643922, +91 8858580214), and exact Landmark details. Keep the grayscale Google Map iframe.
+- Right Column: The "Request Priority Callback" appointment form.
+- Add a new "Transport & Accessibility" block explaining parking availability and nearest transport hubs.
+
+**Refactoring the Navigation (`src/components/Navbar.jsx`)**
+- Update the navigation links to use `Link` from `react-router-dom` pointing to the new routes: Home, About, Specialities, Patient Guide, Contact. Ensure the mobile menu closes on route change.
+
+Execute this refactor, ensuring all components are cleanly separated in a `src/pages/` and `src/components/` directory structure.
