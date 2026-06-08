@@ -1,0 +1,54 @@
+Scaffold a new Vite + React + Tailwind CSS project for a premium, ultra-luxury healthcare website called "SR³ ENT & SURGICAL CENTRE". Install `lucide-react` for icons and `framer-motion` for smooth animations. Build a fully responsive, single-page application structure by creating the following components and assembling them in `App.jsx`.
+
+**1. Global Styles & Theme**
+Configure Tailwind to use a luxury color palette based on our brand logo. 
+Primary dark background: Dark navy/charcoal (#1A1B26 or #0A192F).
+Light sections: Crisp white.
+Subtle backgrounds: Soft clinical gray.
+Accents & Buttons: Vibrant yellow/gold.
+Typography: Distinguished serif font for headings, clean sans-serif for body text.
+
+**2. Header & Navigation (src/components/Navbar.jsx)**
+Emergency Bar: A slim top bar reading "Emergency & Appointments: +91 9369643922 | +91 8858580214".
+Navbar: Sticky, glassmorphism effect. Include the clinic name in serif font. Links: Home, Specialists, Services, Patient Care, Contact. Add a prominent, vibrant yellow/gold-accented "Book Appointment" button.
+
+**3. Hero Section (src/components/Hero.jsx)**
+Layout: Full-screen height. 
+Background: High-quality abstract medical or luxury clinic interior placeholder image from Unsplash, with a dark navy/charcoal overlay to ensure text readability.
+Content: Large elegant serif heading reading "World-Class Healthcare, Delivered with Compassion." Subheading reading "Advanced ENT, Surgical, and Multispecialty Care in Lucknow."
+CTA Buttons: Two side-by-side buttons using Framer Motion for a slight hover scale. Primary solid vibrant yellow/gold button "Schedule a Consultation" (dark text for contrast). Secondary outlined white button "Explore Our Services".
+
+**4. The Medical Specialists Component (src/components/Specialists.jsx)**
+Design: Title the section "Our World-Class Specialists" with a light clinical gray background. Create an elegant CSS grid of profile cards. Each card needs a soft shadow, a high-quality professional Unsplash placeholder portrait, and a hover effect that slightly lifts the card. Include a "View Profile" link at the bottom with a Lucide right arrow icon.
+Data to Map:
+- Dr. Samvartika: M.B.B.S., D.L.O. (ENT Specialist, Reg No. 56440)
+- Dr. R.K. Vishwakarma: M.B.B.S., MS, FIAGES, DIPMAS, FISCP (General & Laparoscopic Surgeon, Reg No. 55922)
+- Dr. Madhu Agrawal: M.B.B.S. (Obstetrics and Gynaecology, Reg No. 45480)
+- Dr. Leena Verma: Physiotherapist (Reg No. 16731)
+- Dr. Induja Dixit: MSc, PhD (Consultant Dietitian)
+Typography: Style names in luxury serif and qualifications in clean sans-serif.
+
+**5. Interactive Services Tabs (src/components/Services.jsx)**
+Design: Title this section "Centers of Excellence & Services" with a crisp white background. Build a React state-driven interactive side-tab or top-tab component. Highlight the active tab with the vibrant yellow/gold accent color. Use standard Tailwind transitions and minimal lucide-react icons for list items.
+Tab Categories:
+- Tab 1: ENT & Head/Neck (Dr. Samvartika) - Endoscopic ENT Surgeries; Tonsil & Adenoid Treatments; Thyroid & Salivary Gland Surgeries; Head, Neck, Oral & Throat Cancer Care; Audiometry (Hearing Tests) & Hearing Aids.
+- Tab 2: Advanced General Surgery (Dr. R.K. Vishwakarma) - Laparoscopic & Open Surgeries; Gallbladder, Appendix, Hernia & Prostate; Laser & Ksharsutra for Piles, Fissure, Fistula; Kidney Stone & Tumor Surgeries.
+- Tab 3: Obstetrics & Gynaecology (Dr. Madhu Agrawal) - Cesarean Delivery & Pregnancy Care; Infertility Treatment & Menstrual Disorders; Uterine Tumor Surgeries.
+- Tab 4: Allied Health & Diagnostics - Advanced Physiotherapy (Neck, Back, Knee); Diet & Nutritional Counseling; Blood Tests, BP/Sugar Monitoring & Nebulization.
+
+**6. Trust Elements & Features (src/components/WhyChooseUs.jsx)**
+Design: Background is dark navy/charcoal (#1A1B26) with crisp white text and vibrant yellow/gold highlights for icons. Use a two-column split layout that stacks on mobile.
+Left Column: A beautifully styled masonry grid of 3 images showing state-of-the-art medical equipment and a clean hospital environment (Unsplash placeholders) with subtle rounded corners and borders.
+Right Column: Icon-based vertical list featuring Advanced Endoscopic & Laser Technology, Multispecialty Excellence, Patient-Centric Approach, and Comprehensive Diagnostics. Add brief descriptive subtext to each.
+Ticker Banner: At the bottom of this component, add a full-width scrolling text ticker (or centered banner) with a vibrant yellow/gold background and dark text reading: "Relief from chronic ailments | Safe post-operative care | Expert second opinions for complex cases."
+
+**7. Contact & Location (src/components/Contact.jsx)**
+Design: White background, split two-column layout.
+Left Column (Location): Address reading "Shivbalak Market, Opp. Mahindra Showroom, Tiwariganj, Faizabad Road, Lucknow". Clickable phone numbers: +91 9369643922, +91 8858580214. Include a generic embedded Google Map iframe styled with a grayscale CSS filter. Add a note about nearby landmarks: BBD, Polytechnic, Kamta Chauraha.
+Right Column (Appointment Form): Sleek, floating contact form with inputs for Full Name, Phone Number, Preferred Date, and a Select Dropdown for Department (ENT, Surgery, Gynaecology, Physio, Dietitian). Submit button should be bold vibrant yellow/gold reading "Request Priority Callback".
+
+**8. Footer Component (src/components/Footer.jsx)**
+Design: Dark navy/charcoal background. 
+Content: Include "SR³ Care & Cure" as a logo block, a "Committed to your health" mission statement, a small grid of quick navigation links, and a centered copyright notice reading "© 2026 SR³ ENT & Surgical Centre. All rights reserved."
+
+Assemble all components sequentially inside `App.jsx` and ensure mobile responsiveness across the entire layout.

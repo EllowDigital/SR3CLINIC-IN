@@ -1,0 +1,112 @@
+Create a multi-page, ultra-luxury, modern Indian-style healthcare website for "SR³ ENT & SURGICAL CENTRE" using Vite, React, Tailwind CSS, react-router-dom, lucide-react, and framer-motion. 
+
+The application must be a functional multi-page app with complete routing so that clicking links in the Navbar dynamically updates the view to the corresponding sub-page.
+
+---
+
+### 1. Project Directory Structure
+Ensure Replit creates and organizes the files exactly like this:
+- src/
+  - components/
+    - Layout.jsx (Persisting Navbar, Emergency Bar, Footer, and Floating WhatsApp Button)
+    - Navbar.jsx
+    - Footer.jsx
+    - FloatingWhatsApp.jsx
+  - pages/
+    - Home.jsx
+    - About.jsx
+    - Specialities.jsx
+    - PatientGuide.jsx
+    - ContactPage.jsx
+  - App.jsx (App routing config)
+  - index.css (Tailwind configuration & custom fonts)
+
+---
+
+### 2. Global Theme & Styling (index.css & Tailwind Config)
+- Colors: Primary dark sectors use deep premium charcoal/navy (#0A192F or #1A1B26), light sections use crisp white (#FFFFFF), subtle sections use soft clean clinical gray (#F8FAFC). Accents, highlights, active states, and primary CTA buttons use vibrant gold/yellow (#F59E0B or similar high-contrast gold) matching the clinic's branding graphics.
+- Typography: Distinguished serif font (e.g., Playfair Display style) for headings; ultra-clean, highly readable sans-serif (e.g., Inter or Plus Jakarta Sans) for body copy and dense medical text.
+
+---
+
+### 3. Layout Components (src/components/)
+
+#### Layout.jsx
+Wraps all pages. It must include the Emergency Bar at the absolute top, followed by the sticky Navbar, the page content placeholder (`<Outlet />`), the full-width Footer, and a fixed Floating WhatsApp Button pinned to the bottom-right corner.
+
+#### Navbar.jsx
+- Emergency Top Bar: Slim row with text: "Emergency & Appointments: +91 9369643922 | +91 8858580214".
+- Main Navigation: Sticky header with a luxury glassmorphism background effect. Displays the clinic name "SR³ ENT & SURGICAL CENTRE" in a premium serif font.
+- Links (Using react-router-dom `Link` or `NavLink`): Home, About Us, Specialities & Doctors, Patient Guide, Contact.
+- Action Button: Prominent gold-accented "Book Appointment" button linking directly to the Contact page.
+- Mobile Layout: Responsive hamburger menu that smoothly slides open and closes immediately when a route link is clicked.
+
+#### FloatingWhatsApp.jsx
+A fixed circular button at the bottom right corner featuring the WhatsApp icon with a subtle pulsing radar animation to capture attention. Clicking it opens a direct link to chat with `+919369643922` with a pre-filled template text: "Namaste SR³ Centre, I would like to book an appointment/inquire about services."
+
+---
+
+### 4. Application Routing Configuration (src/App.jsx)
+Set up `BrowserRouter`, `Routes`, and `Route` from `react-router-dom`. Define the paths matching the layout structure:
+- `/` renders `Home.jsx`
+- `/about` renders `About.jsx`
+- `/specialities` renders `Specialities.jsx`
+- `/patient-guide` renders `PatientGuide.jsx`
+- `/contact` renders `ContactPage.jsx`
+
+---
+
+### 5. Detailed Page Content (src/pages/)
+
+#### Home.jsx (Landing Page)
+- Hero Section: Full screen height ($100\text{vh}$). High-quality abstract medical or luxury hospital interior placeholder from Unsplash with a dark navy overlay. Large elegant serif heading: "World-Class Healthcare, Delivered with Compassion." Subheading: "Advanced ENT, Surgical, and Multispecialty Care in Lucknow." Two Framer Motion interactive CTA buttons side-by-side: "Schedule a Consultation" (Solid Gold, dark text) and "Explore Our Services" (Outlined White).
+- Indian Market Trust Stats Bar: Clean horizontal bar right below the hero displaying: "15+ Years of Clinical Excellence | 10,000+ Success Stories | Cashless TPA Insurance Facility Available".
+- Quick Overview Grid: Brief visual callouts pointing to the core departments with luxury hover lift effects.
+- Verified Patient Reviews: A premium testimonial slider displaying feedback from local patients using clean Indian placeholder names (e.g., "Anand Verma", "Sunita Sharma") highlighting successful treatments, relief from chronic ailments, and clean hospital facilities.
+
+#### About.jsx (About Us Page)
+- Core Legacy: A deep-dive text layout explaining the mission of "SR³ Care & Cure" to bring absolute healthcare excellence to Lucknow.
+- Leadership Message: A elegantly styled quote section for the Medical Director/Lead Specialist with placeholder professional portrait framing.
+- Infrastructure Pillars: A 3-image grid showcasing high-end infrastructure (Modern Operation Theatre, Premium Recovery Wards, and Advanced Diagnostic Suites) using premium medical placeholders.
+
+#### Specialities.jsx (Comprehensive Specialities & Doctors Page)
+This page must explicitly map out all five specialists with their detailed qualifications, medical specialties, and official State Medical Council registration numbers to provide maximum authenticity:
+1. **Dr. Samvartika** — M.B.B.S., D.L.O. | *ENT Specialist* | Reg No. 56440
+   - *Services:* Endoscopic ENT Surgeries; Tonsil & Adenoid Treatments; Thyroid & Salivary Gland Surgeries; Head, Neck, Oral & Throat Cancer Care; Audiometry (Hearing Tests) & Hearing Aids.
+2. **Dr. R.K. Vishwakarma** — M.B.B.S., MS, FIAGES, DIPMAS, FISCP | *General & Laparoscopic Surgeon* | Reg No. 55922
+   - *Services:* Laparoscopic & Open Surgeries; Gallbladder, Appendix, Hernia & Prostate; Laser & Ksharsutra for Piles, Fissure, Fistula; Kidney Stone & Tumor Surgeries.
+3. **Dr. Madhu Agrawal** — M.B.B.S. | *Obstetrics and Gynaecology* | Reg No. 45480
+   - *Services:* Cesarean Delivery & Pregnancy Care; Infertility Treatment & Menstrual Disorders; Uterine Tumor Surgeries.
+4. **Dr. Leena Verma** — *Physiotherapist* | Reg No. 16731
+   - *Services:* Advanced Physiotherapy for Neck, Back, and Knee ailments; post-operative rehabilitation.
+5. **Dr. Induja Dixit** — MSc, PhD | *Consultant Dietitian*
+   - *Services:* Diet & Nutritional Counseling; Therapeutic lifestyle management.
+- Extra Diagnostics Layer: Include an independent section for minor procedures: Blood Tests, BP/Sugar Monitoring, and Nebulization.
+- Presentation: Use a responsive multi-column layout for doctor profiles. Below the profiles, render an interactive, clean tabbed element allowing patients to switch between departments smoothly.
+
+#### PatientGuide.jsx (Patient Info & Insurance)
+- Cashless & TPA Panel: A major highlighted section detailing health insurance partnerships. Create a grid of stylized card components representing trust shields for major Indian insurance companies (e.g., Star Health, HDFC ERGO, Niva Bupa, ICICI Lombard, Medi Assist). Include a prominent subtext: "Pre-Auth forms and assistance available at our reception desk."
+- Admission to Discharge Guide: A clean visual vertical timeline outlining the timeline for planned surgeries versus emergency procedures.
+- Patient FAQs: Interactive Tailwind accordions detailing:
+  - "What documents are required for cashless admission?" (Aadhaar Card, Pan Card, TPA Insurance Card/Policy copy).
+  - "Are OPD consultations available on Sundays?"
+  - "Do you provide expert second opinions for complex chronic ailments?"
+
+#### ContactPage.jsx (Full Contact, Directions & Form)
+- Left Column (Location Framework): Precise location markers:
+  - Address: "Shivbalak Market, Opp. Mahindra Showroom, Tiwariganj, Faizabad Road, Lucknow"
+  - Key Regional Landmarks: "Near BBD University, Polytechnic, and Kamta Chauraha"
+  - Phone Contacts: Clickable links for `+91 9369643922` and `+91 8858580214`.
+  - Embed a clean, responsive placeholder Google Maps iframe. Apply a standard Tailwind CSS utility filter (`grayscale invert contrast-75`) to keep it aligned with the ultra-luxury website layout palette.
+- Right Column (Priority Appointment Form): Clean, floating shadow panel card. Form inputs: Full Name, Active Mobile Number, Preferred Booking Date, and a custom Dropdown Select Menu for target department (ENT, General Surgery, Gynaecology, Physiotherapy, Diet & Nutrition). Submit button: Vibrant high-contrast gold color text layout reading: "Request Priority Callback".
+
+---
+
+### 6. Footer (src/components/Footer.jsx)
+Dark navy/charcoal base background block. 
+- Left section: "SR³ Care & Cure" branding title and a concise premium tagline: "Committed to your health with advanced minimally invasive care, medical expertise, and transparent patient pricing."
+- Middle section: Organized quick navigation links linking to all routing sub-pages.
+- Right section: Operational hours notice ("OPD Timings: Monday - Saturday").
+- Centered baseline text layout: "© 2026 SR³ ENT & Surgical Centre. All rights reserved."
+
+Build the entire architecture, ensure all routes load perfectly, make it 100% responsive for Indian mobile networks/smartphones, and do not miss any medical registry numbers or specific services listed above.
