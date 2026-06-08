@@ -1,33 +1,33 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Calendar, Phone } from 'lucide-react'
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Calendar, Phone } from "lucide-react";
 
 const links = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
-  { label: 'Specialities', to: '/specialities' },
-  { label: 'Patient Guide', to: '/patient-guide' },
-  { label: 'Contact', to: '/contact' },
-]
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Specialities", to: "/specialities" },
+  { label: "Patient Guide", to: "/patient-guide" },
+  { label: "Contact", to: "/contact" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
-    setOpen(false)
-    window.scrollTo(0, 0)
-  }, [pathname])
+    setOpen(false);
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-  const isHome = pathname === '/'
+  const isHome = pathname === "/";
 
   return (
     <>
@@ -35,17 +35,19 @@ export default function Navbar() {
       <div className="fixed top-0 left-0 right-0 z-50 bg-gold text-navy text-xs font-sans font-semibold py-1.5 text-center tracking-wide">
         <Phone className="inline w-3 h-3 mr-1.5 -mt-0.5" />
         Emergency &amp; Appointments:&nbsp;
-        <a href="tel:+919369643922" className="hover:underline">+91 9369643922</a>
+        <a href="tel:+919369643922" className="hover:underline">
+          +91 9369643922
+        </a>
         <span className="mx-2">|</span>
-        <a href="tel:+918858580214" className="hover:underline">+91 8858580214</a>
+        <a href="tel:+918858580214" className="hover:underline">
+          +91 8858580214
+        </a>
       </div>
 
       {/* Navbar */}
       <header
         className={`fixed top-7 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled || !isHome
-            ? 'glassmorphism py-2'
-            : 'bg-transparent py-3'
+          scrolled || !isHome ? "glassmorphism py-2" : "bg-transparent py-3"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -57,26 +59,30 @@ export default function Navbar() {
               className="w-12 h-12 rounded-full object-cover border-2 border-gold shadow-md"
             />
             <div>
-              <p className="text-white font-serif font-semibold text-base leading-tight">SR³ ENT &amp;</p>
-              <p className="text-gold text-[10px] font-sans tracking-[0.25em] uppercase">Surgical Centre</p>
+              <p className="text-white font-serif font-semibold text-base leading-tight">
+                SR³ ENT &amp;
+              </p>
+              <p className="text-gold text-[10px] font-sans tracking-[0.25em] uppercase">
+                Surgical Centre
+              </p>
             </div>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7">
             {links.map((l) => {
-              const active = pathname === l.to
+              const active = pathname === l.to;
               return (
                 <Link
                   key={l.to}
                   to={l.to}
                   className={`text-sm font-sans font-medium tracking-wide transition-colors duration-200 ${
-                    active ? 'text-gold' : 'text-white/80 hover:text-gold'
+                    active ? "text-gold" : "text-white/80 hover:text-gold"
                   }`}
                 >
                   {l.label}
                 </Link>
-              )
+              );
             })}
           </nav>
 
@@ -104,7 +110,7 @@ export default function Navbar() {
           {open && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="lg:hidden glassmorphism border-t border-gold/20"
@@ -132,5 +138,5 @@ export default function Navbar() {
         </AnimatePresence>
       </header>
     </>
-  )
+  );
 }
