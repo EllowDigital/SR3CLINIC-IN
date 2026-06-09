@@ -201,7 +201,7 @@ export default function PatientSuccessStories() {
                 overflow: 'hidden', border: '2px solid var(--neutral-100)',
                 flexShrink: 0,
               }}>
-                <img src={s.image} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={s.image} alt={`${s.name} — patient at SR³ ENT & Surgical Centre Lucknow`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div>
                 <div style={{ fontFamily: 'var(--font-accent)', fontWeight: 700, fontSize: 'var(--text-base)', color: 'var(--navy-900)' }}>
@@ -244,7 +244,7 @@ export default function PatientSuccessStories() {
                   overflow: 'hidden', margin: '0 auto var(--space-2)',
                   border: `2px solid ${i === active ? 'var(--gold-400)' : 'var(--neutral-200)'}`,
                 }}>
-                  <img src={st.image} alt={st.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={st.image} alt={st.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ fontSize: 10, fontFamily: 'var(--font-accent)', fontWeight: 600, color: i === active ? 'var(--navy-800)' : 'var(--neutral-500)' }}>
                   {st.name.split(' ')[0]}

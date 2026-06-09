@@ -6,6 +6,7 @@ import {
   User, Stethoscope, Calendar, ChevronRight, ChevronLeft,
 } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { useSEO, breadcrumbSchema } from '../hooks/useSEO';
 import { CLINIC, SERVICES, DOCTORS } from '../data/clinic';
 import { useToast } from '../components/ToastNotification';
 
@@ -30,6 +31,28 @@ const STEPS = [
 ];
 
 export default function AppointmentPage() {
+  useSEO({
+    title: 'Book Appointment — SR³ ENT & Surgical Centre Lucknow',
+    description: 'Book your appointment online at SR³ ENT & Surgical Centre, Lucknow. Same-day consultations available for ENT, surgery, gynecology, physiotherapy & diet. Call +91 9369643922 or book online in 2 minutes.',
+    keywords: 'book appointment ENT Lucknow, ENT clinic appointment Lucknow, online appointment SR3 ENT, same day ENT consultation Lucknow',
+    canonical: '/appointment',
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        breadcrumbSchema([
+          { name: 'Home', url: '/' },
+          { name: 'Book Appointment', url: '/appointment' },
+        ]),
+        {
+          '@type': 'MedicalWebPage',
+          'name': 'Book Appointment at SR³ ENT & Surgical Centre Lucknow',
+          'description': 'Book an appointment with our ENT, surgery, gynecology, physiotherapy, or diet specialists in Lucknow. Online booking, WhatsApp, or phone.',
+          'url': 'https://sr3entandsurgicalcentre.com/appointment',
+        },
+      ],
+    },
+  });
+
   const { ref: heroRef, isInView: heroInView } = useInView(0.1);
   const { ref: formRef, isInView: formInView } = useInView(0.05);
   const { showToast } = useToast();
