@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CalendarCheck, Phone, Clock, Shield, CircleCheck as CheckCircle } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import { CLINIC, SERVICES } from '../data/clinic';
@@ -67,13 +68,13 @@ export default function AppointmentPage() {
                   <p style={{ fontSize: 'var(--text-sm)', color: 'var(--neutral-600)', maxWidth: 400, margin: '0 auto var(--space-6)' }}>
                     Thank you, {form.name}! Our care coordinator will call you within 30 minutes to confirm your {form.service || 'appointment'} appointment.
                   </p>
-                  <a href="/" style={{
+                  <Link to="/" style={{
                     display: 'inline-flex', padding: '10px var(--space-6)', borderRadius: 'var(--radius-full)',
                     background: 'var(--navy-800)', color: 'var(--neutral-0)', fontSize: 'var(--text-sm)',
                     fontWeight: 600, fontFamily: 'var(--font-accent)',
                   }}>
                     Back to Home
-                  </a>
+                  </Link>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{
@@ -113,10 +114,11 @@ export default function AppointmentPage() {
                       borderRadius: 'var(--radius-md)', border: '1px solid var(--neutral-200)',
                       fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)',
                       color: 'var(--navy-800)', resize: 'vertical', outline: 'none',
-                      transition: 'border-color var(--transition-fast)',
+                      transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)',
+                      background: 'var(--neutral-0)',
                     }}
-                    onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold-400)'; }}
-                    onBlur={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; }} />
+                    onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold-400)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(230,168,23,0.1)'; }}
+                    onBlur={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; e.currentTarget.style.boxShadow = 'none'; }} />
                   </div>
 
                   <button type="submit" style={{
@@ -140,6 +142,19 @@ export default function AppointmentPage() {
               opacity: formInView ? 1 : 0, transform: formInView ? 'translateX(0)' : 'translateX(20px)',
               transition: 'all 0.6s ease-out 0.15s', display: 'flex', flexDirection: 'column', gap: 'var(--space-5)',
             }}>
+              {/* Logo branding */}
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 'var(--space-3)',
+                padding: 'var(--space-4)', borderRadius: 'var(--radius-lg)',
+                background: 'var(--navy-50)', border: '1px solid var(--navy-100)',
+              }}>
+                <img src="/sr3clinic.jpeg" alt="SR3 Logo" style={{ width: 42, height: 42, borderRadius: 'var(--radius-md)', objectFit: 'cover' }} />
+                <div>
+                  <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 'var(--text-sm)', color: 'var(--navy-900)' }}>SR3 ENT & Surgical</div>
+                  <div style={{ fontFamily: 'var(--font-accent)', fontSize: 'var(--text-xs)', color: 'var(--gold-600)', fontWeight: 500, letterSpacing: '0.1em' }}>CARE & CURE</div>
+                </div>
+              </div>
+
               {/* Quick Call */}
               <div style={{
                 padding: 'var(--space-5)', borderRadius: 'var(--radius-lg)',
@@ -228,10 +243,11 @@ function FormField({ label, name, value, onChange, placeholder, type = 'text', r
         width: '100%', padding: '10px var(--space-4)', borderRadius: 'var(--radius-md)',
         border: '1px solid var(--neutral-200)', fontSize: 'var(--text-sm)',
         fontFamily: 'var(--font-accent)', color: 'var(--navy-800)', outline: 'none',
-        transition: 'border-color var(--transition-fast)',
+        transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)',
+        background: 'var(--neutral-0)',
       }}
-      onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold-400)'; }}
-      onBlur={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; }} />
+      onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold-400)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(230,168,23,0.1)'; }}
+      onBlur={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; e.currentTarget.style.boxShadow = 'none'; }} />
     </div>
   );
 }
@@ -250,10 +266,10 @@ function FormSelect({ label, name, value, onChange, required = false, children }
         border: '1px solid var(--neutral-200)', fontSize: 'var(--text-sm)',
         fontFamily: 'var(--font-accent)', color: value ? 'var(--navy-800)' : 'var(--neutral-400)',
         outline: 'none', background: 'var(--neutral-0)',
-        transition: 'border-color var(--transition-fast)', appearance: 'auto',
+        transition: 'border-color var(--transition-fast), box-shadow var(--transition-fast)',
       }}
-      onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold-400)'; }}
-      onBlur={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; }}>
+      onFocus={e => { e.currentTarget.style.borderColor = 'var(--gold-400)'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(230,168,23,0.1)'; }}
+      onBlur={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; e.currentTarget.style.boxShadow = 'none'; }}>
         {children}
       </select>
     </div>

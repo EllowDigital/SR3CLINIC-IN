@@ -1,4 +1,5 @@
 import { Ear, ScissorsLineDashed, Baby, Activity, Apple, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import { SERVICES } from '../data/clinic';
 
@@ -111,7 +112,7 @@ export default function ServicesOverview() {
                   ))}
                 </div>
 
-                <a href={`#${s.id}`} style={{
+                <Link to={`/services#${s.id}`} style={{
                   display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)',
                   fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)', fontWeight: 600,
                   color: s.color, marginTop: 'auto', transition: 'gap var(--transition-fast)',
@@ -120,7 +121,7 @@ export default function ServicesOverview() {
                 onMouseLeave={e => { e.currentTarget.style.gap = 'var(--space-1)'; }}
                 >
                   Learn More <ArrowRight size={14} />
-                </a>
+                </Link>
               </div>
             </div>
             );

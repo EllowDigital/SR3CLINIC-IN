@@ -1,9 +1,11 @@
 import { CalendarCheck, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CLINIC } from '../data/clinic';
 
 export default function FloatingAppointment() {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -74,14 +76,14 @@ export default function FloatingAppointment() {
             {[
               { label: 'Call Us', sublabel: 'Speak directly', href: `tel:${CLINIC.phone1.replace(/\s+/g, '')}`, primary: true },
               { label: 'WhatsApp', sublabel: 'Chat & book', href: `https://wa.me/${CLINIC.phone1.replace(/[^\d]/g, '')}`, primary: false },
-              { label: 'Online Form', sublabel: 'Fill details', href: '#appointment', primary: false },
+              { label: 'Online Form', sublabel: 'Fill details', href: '/appointment', primary: false, internal: true },
             ].map((option) => (
               <a
                 key={option.label}
-                href={option.href}
+                href={option.internal ? undefined : option.href}
                 target={option.href.startsWith('http') ? '_blank' : undefined}
                 rel={option.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                onClick={() => setExpanded(false)}
+                onClick={() => { setExpanded(false); if (option.internal) navigate(option.href); }}
                 style={{
                   display: 'flex',
                   alignItems: 'center',

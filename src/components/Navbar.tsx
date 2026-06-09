@@ -109,36 +109,17 @@ export default function Navbar() {
         }}>
           {/* Logo */}
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', textDecoration: 'none' }}>
-            <div style={{
-              width: isScrolled ? 38 : 44,
-              height: isScrolled ? 38 : 44,
-              borderRadius: 'var(--radius-md)',
-              background: 'linear-gradient(135deg, var(--navy-800), var(--navy-900))',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all var(--transition-base)',
-              position: 'relative',
-            }}>
-              <span style={{
-                fontFamily: 'var(--font-heading)',
-                fontWeight: 700,
-                fontSize: isScrolled ? 'var(--text-xs)' : 'var(--text-sm)',
-                color: 'var(--gold-400)',
-                lineHeight: 1,
-                letterSpacing: '-0.02em',
-              }}>SR³</span>
-              <div style={{
-                position: 'absolute',
-                bottom: -2,
-                right: -2,
-                width: 10,
-                height: 10,
-                borderRadius: '50%',
-                background: 'var(--gold-500)',
-                border: '2px solid var(--neutral-0)',
-              }} />
-            </div>
+            <img
+              src="/sr3clinic.jpeg"
+              alt="SR3 Logo"
+              style={{
+                width: isScrolled ? 38 : 46,
+                height: isScrolled ? 38 : 46,
+                borderRadius: 'var(--radius-md)',
+                objectFit: 'cover',
+                transition: 'all var(--transition-base)',
+              }}
+            />
             <div>
               <div style={{
                 fontFamily: 'var(--font-heading)',

@@ -1,4 +1,5 @@
 import { ArrowRight, Phone, Shield, Clock, Award, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import { CLINIC } from '../data/clinic';
 
@@ -112,7 +113,7 @@ export default function Hero() {
 
           {/* Dual CTAs */}
           <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="#appointment" style={{
+            <Link to="/appointment" style={{
               display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
               padding: '14px var(--space-8)', borderRadius: 'var(--radius-full)',
               background: 'linear-gradient(135deg, var(--gold-500), var(--gold-600))',
@@ -125,7 +126,7 @@ export default function Hero() {
             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(230,168,23,0.35)'; }}
             >
               Book Appointment <ArrowRight size={18} />
-            </a>
+            </Link>
             <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
               display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
               padding: '14px var(--space-6)', borderRadius: 'var(--radius-full)',
@@ -183,15 +184,15 @@ export default function Hero() {
             boxShadow: '0 40px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.1)',
           }}>
             <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'var(--space-8)' }}>
-              {/* Medical illustration */}
-              <svg viewBox="0 0 200 200" style={{ width: '55%', opacity: 0.12, marginBottom: 'var(--space-6)' }}>
-                <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" strokeDasharray="4 4" />
-                <circle cx="100" cy="100" r="72" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
-                <circle cx="100" cy="100" r="52" fill="none" stroke="rgba(230,168,23,0.2)" strokeWidth="0.5" />
-                <rect x="88" y="25" width="24" height="150" rx="12" fill="rgba(255,255,255,0.1)" />
-                <rect x="25" y="88" width="150" height="24" rx="12" fill="rgba(255,255,255,0.1)" />
-                <circle cx="100" cy="100" r="16" fill="rgba(230,168,23,0.08)" stroke="rgba(230,168,23,0.15)" strokeWidth="0.5" />
-              </svg>
+              {/* Logo image */}
+              <img
+                src="/sr3clinic.jpeg"
+                alt="SR3 ENT & Surgical Centre"
+                style={{
+                  width: '70%', maxWidth: 280, borderRadius: 'var(--radius-lg)',
+                  marginBottom: 'var(--space-5)', objectFit: 'contain',
+                }}
+              />
 
               <div style={{ textAlign: 'center' }}>
                 <div style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--text-4xl)', fontWeight: 700, color: 'var(--neutral-0)', marginBottom: 'var(--space-2)' }}>SR³</div>

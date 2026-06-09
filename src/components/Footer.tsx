@@ -39,23 +39,16 @@ export default function Footer() {
             {/* Brand column */}
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-5)' }}>
-                <div style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 'var(--radius-md)',
-                  background: 'rgba(230, 168, 23, 0.1)',
-                  border: '1px solid rgba(230, 168, 23, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                  <span style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: 700,
-                    fontSize: 'var(--text-sm)',
-                    color: 'var(--gold-400)',
-                  }}>SR³</span>
-                </div>
+                <img
+                  src="/sr3clinic.jpeg"
+                  alt="SR3 Logo"
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 'var(--radius-md)',
+                    objectFit: 'cover',
+                  }}
+                />
                 <div>
                   <div style={{
                     fontFamily: 'var(--font-heading)',
