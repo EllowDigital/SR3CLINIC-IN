@@ -1,23 +1,27 @@
 import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useScrollPosition } from '../hooks/useScrollPosition';
+import { CLINIC } from '../data/clinic';
 
 const navLinks = [
   {
     label: 'Specialities',
-    href: '#specialities',
-    submenu: ['ENT', 'General Surgery', 'Gynecology', 'Physiotherapy', 'Diet Consultation'],
+    href: '/services',
+    submenu: ['ENT', 'General Surgery', 'Laparoscopic Surgery', 'Gynecology', 'Physiotherapy', 'Diet Consultation'],
   },
-  { label: 'About', href: '#about' },
-  { label: 'Doctors', href: '#doctors' },
-  { label: 'Facilities', href: '#facilities' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/about' },
+  { label: 'Doctors', href: '/doctors' },
+  { label: 'Facilities', href: '/facilities' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export default function Navbar() {
   const { isScrolled } = useScrollPosition();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (mobileOpen) {
@@ -27,6 +31,20 @@ export default function Navbar() {
     }
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  const handleNavClick = (href: string, e?: React.MouseEvent) => {
+    setMobileOpen(false);
+    setActiveSubmenu(null);
+    if (href.startsWith('#')) {
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+      } else if (e) {
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <>
@@ -49,11 +67,11 @@ export default function Navbar() {
           padding: '0 var(--space-6)',
         }}>
           <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
-            <span style={{ opacity: 0.8 }}>Mon - Sat: 9:00 AM - 8:00 PM</span>
+            <span style={{ opacity: 0.8 }}>{CLINIC.hours.weekday}</span>
             <span style={{ opacity: 0.5 }}>|</span>
-            <span style={{ opacity: 0.8 }}>Lucknow, Uttar Pradesh</span>
+            <span style={{ opacity: 0.8 }}>{CLINIC.address.city}, {CLINIC.address.state}</span>
           </div>
-          <a href="tel:+919999999999" style={{
+          <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
             display: 'flex',
             alignItems: 'center',
             gap: 'var(--space-2)',
@@ -61,7 +79,7 @@ export default function Navbar() {
             fontWeight: 500,
           }}>
             <Phone size={12} />
-            +91 99999 99999
+            {CLINIC.phone1}
           </a>
         </div>
       </div>
@@ -90,7 +108,7 @@ export default function Navbar() {
           transition: 'height var(--transition-base)',
         }}>
           {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', textDecoration: 'none' }}>
             <div style={{
               width: isScrolled ? 38 : 44,
               height: isScrolled ? 38 : 44,
@@ -146,7 +164,7 @@ export default function Navbar() {
                 Care & Cure
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div style={{
@@ -161,7 +179,7 @@ export default function Navbar() {
                 onMouseLeave={() => setActiveSubmenu(null)}
                 style={{ position: 'relative' }}
               >
-                <a href={link.href} style={{
+                <Link to={link.href} onClick={(e) => handleNavClick(link.href, e)} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: 4,
@@ -173,19 +191,20 @@ export default function Navbar() {
                   color: 'var(--navy-800)',
                   letterSpacing: '0.01em',
                   transition: 'all var(--transition-fast)',
+                  textDecoration: 'none',
                 }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.background = 'var(--navy-50)';
-                  (e.target as HTMLElement).style.color = 'var(--navy-900)';
+                  e.currentTarget.style.background = 'var(--navy-50)';
+                  e.currentTarget.style.color = 'var(--navy-900)';
                 }}
                 onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.background = 'transparent';
-                  (e.target as HTMLElement).style.color = 'var(--navy-800)';
+                  e.currentTarget.style.background = 'transparent';
+                  e.currentTarget.style.color = 'var(--navy-800)';
                 }}
                 >
                   {link.label}
                   {link.submenu && <ChevronDown size={14} />}
-                </a>
+                </Link>
 
                 {/* Dropdown */}
                 {link.submenu && activeSubmenu === link.label && (
@@ -193,7 +212,7 @@ export default function Navbar() {
                     position: 'absolute',
                     top: '100%',
                     left: 0,
-                    minWidth: 200,
+                    minWidth: 220,
                     padding: 'var(--space-2)',
                     background: 'rgba(255,255,255,0.95)',
                     backdropFilter: 'blur(16px)',
@@ -203,7 +222,7 @@ export default function Navbar() {
                     animation: 'fadeInUp 0.2s ease-out',
                   }}>
                     {link.submenu.map((item) => (
-                      <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} style={{
+                      <Link key={item} to={`/services#${item.toLowerCase().replace(/\s+/g, '-')}`} onClick={() => { setActiveSubmenu(null); setMobileOpen(false); }} style={{
                         display: 'block',
                         padding: 'var(--space-2) var(--space-3)',
                         borderRadius: 'var(--radius-sm)',
@@ -211,18 +230,18 @@ export default function Navbar() {
                         fontFamily: 'var(--font-accent)',
                         color: 'var(--neutral-700)',
                         transition: 'all var(--transition-fast)',
+                        textDecoration: 'none',
                       }}
                       onMouseEnter={(e) => {
-                        (e.target as HTMLElement).style.background = 'var(--navy-50)';
-                        (e.target as HTMLElement).style.color = 'var(--navy-800)';
+                        e.currentTarget.style.background = 'var(--navy-50)';
+                        e.currentTarget.style.color = 'var(--navy-800)';
                       }}
                       onMouseLeave={(e) => {
-                        (e.target as HTMLElement).style.background = 'transparent';
-                        (e.target as HTMLElement).style.color = 'var(--neutral-700)';
-                      }}
-                      >
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = 'var(--neutral-700)';
+                      }}>
                         {item}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -232,7 +251,7 @@ export default function Navbar() {
 
           {/* CTA + Mobile toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-            <a href="#appointment" style={{
+            <Link to="/appointment" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: 'var(--space-2)',
@@ -246,19 +265,20 @@ export default function Navbar() {
               boxShadow: 'var(--shadow-gold)',
               letterSpacing: '0.02em',
               transition: 'all var(--transition-base)',
+              textDecoration: 'none',
             }}
             onMouseEnter={(e) => {
-              (e.target as HTMLElement).style.transform = 'translateY(-1px)';
-              (e.target as HTMLElement).style.boxShadow = '0 6px 24px rgba(230, 168, 23, 0.35)';
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.boxShadow = '0 6px 24px rgba(230, 168, 23, 0.35)';
             }}
             onMouseLeave={(e) => {
-              (e.target as HTMLElement).style.transform = 'translateY(0)';
-              (e.target as HTMLElement).style.boxShadow = 'var(--shadow-gold)';
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'var(--shadow-gold)';
             }}
             className="nav-cta-desktop"
             >
               Book Appointment
-            </a>
+            </Link>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -313,7 +333,7 @@ export default function Navbar() {
             </div>
             {navLinks.map((link) => (
               <div key={link.label}>
-                <a href={link.href} onClick={() => setMobileOpen(false)} style={{
+                <Link to={link.href} onClick={() => setMobileOpen(false)} style={{
                   display: 'block',
                   padding: 'var(--space-3) var(--space-4)',
                   fontFamily: 'var(--font-accent)',
@@ -322,13 +342,14 @@ export default function Navbar() {
                   color: 'var(--navy-800)',
                   borderRadius: 'var(--radius-md)',
                   marginBottom: 'var(--space-1)',
+                  textDecoration: 'none',
                 }}>
                   {link.label}
-                </a>
+                </Link>
                 {link.submenu && (
                   <div style={{ paddingLeft: 'var(--space-4)' }}>
                     {link.submenu.map((item) => (
-                      <a key={item} href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                      <Link key={item} to={`/services#${item.toLowerCase().replace(/\s+/g, '-')}`}
                         onClick={() => setMobileOpen(false)}
                         style={{
                           display: 'block',
@@ -337,17 +358,18 @@ export default function Navbar() {
                           fontFamily: 'var(--font-accent)',
                           color: 'var(--neutral-500)',
                           borderRadius: 'var(--radius-sm)',
+                          textDecoration: 'none',
                         }}
                       >
                         {item}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
               </div>
             ))}
             <div style={{ marginTop: 'var(--space-6)', padding: 'var(--space-4)' }}>
-              <a href="#appointment" onClick={() => setMobileOpen(false)} style={{
+              <Link to="/appointment" onClick={() => setMobileOpen(false)} style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -361,9 +383,10 @@ export default function Navbar() {
                 fontWeight: 600,
                 fontFamily: 'var(--font-accent)',
                 boxShadow: 'var(--shadow-gold)',
+                textDecoration: 'none',
               }}>
                 Book Appointment
-              </a>
+              </Link>
             </div>
           </div>
         </div>

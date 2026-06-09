@@ -1,5 +1,6 @@
 import { CalendarCheck, X } from 'lucide-react';
 import { useState } from 'react';
+import { CLINIC } from '../data/clinic';
 
 export default function FloatingAppointment() {
   const [expanded, setExpanded] = useState(false);
@@ -71,8 +72,8 @@ export default function FloatingAppointment() {
 
           <div style={{ padding: 'var(--space-5) var(--space-6)' }}>
             {[
-              { label: 'Call Us', sublabel: 'Speak directly', href: 'tel:+919999999999', primary: true },
-              { label: 'WhatsApp', sublabel: 'Chat & book', href: 'https://wa.me/919999999999', primary: false },
+              { label: 'Call Us', sublabel: 'Speak directly', href: `tel:${CLINIC.phone1.replace(/\s+/g, '')}`, primary: true },
+              { label: 'WhatsApp', sublabel: 'Chat & book', href: `https://wa.me/${CLINIC.phone1.replace(/[^\d]/g, '')}`, primary: false },
               { label: 'Online Form', sublabel: 'Fill details', href: '#appointment', primary: false },
             ].map((option) => (
               <a

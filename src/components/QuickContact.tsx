@@ -1,12 +1,13 @@
 import { Phone, MessageCircle, MapPin, Clock } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { CLINIC } from '../data/clinic';
 
 const contacts = [
   {
     icon: Phone,
     label: 'Call Now',
-    value: '+91 99999 99999',
-    href: 'tel:+919999999999',
+    value: CLINIC.phone1,
+    href: `tel:${CLINIC.phone1.replace(/\s+/g, '')}`,
     color: 'var(--teal-600)',
     bg: 'var(--teal-50)',
   },
@@ -14,14 +15,14 @@ const contacts = [
     icon: MessageCircle,
     label: 'WhatsApp',
     value: 'Chat with us',
-    href: 'https://wa.me/919999999999',
+    href: `https://wa.me/${CLINIC.phone1.replace(/[^\d]/g, '')}`,
     color: '#25D366',
     bg: '#f0fdf4',
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: 'Lucknow, UP',
+    value: `${CLINIC.address.city}, ${CLINIC.address.state.split(' ')[0]}`,
     href: '#contact',
     color: 'var(--gold-600)',
     bg: 'var(--gold-50)',
@@ -29,7 +30,7 @@ const contacts = [
   {
     icon: Clock,
     label: 'Working Hours',
-    value: 'Mon-Sat 9AM-8PM',
+    value: CLINIC.hours.weekday.split(':')[0],
     href: '#contact',
     color: 'var(--navy-600)',
     bg: 'var(--navy-50)',

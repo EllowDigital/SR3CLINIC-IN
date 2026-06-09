@@ -1,7 +1,15 @@
 import { Phone, MapPin, Mail, Clock, ArrowUp, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CLINIC } from '../data/clinic';
 
-const specialties = ['ENT', 'General Surgery', 'Gynecology', 'Physiotherapy', 'Diet Consultation'];
-const quickLinks = ['About Us', 'Our Doctors', 'Facilities', 'Appointments', 'Testimonials', 'Contact'];
+const specialties = ['ENT', 'General Surgery', 'Laparoscopic Surgery', 'Gynecology', 'Physiotherapy', 'Diet Consultation'];
+const quickLinks = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Doctors', href: '/doctors' },
+  { label: 'Services', href: '/services' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Appointment', href: '/appointment' },
+];
 const legalLinks = ['Privacy Policy', 'Terms of Service', 'Patient Rights', 'Disclaimer'];
 
 export default function Footer() {
@@ -79,7 +87,7 @@ export default function Footer() {
               </p>
               {/* Contact details */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                <a href="tel:+919999999999" style={{
+                <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: 'var(--space-3)',
@@ -92,9 +100,9 @@ export default function Footer() {
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)'; }}
                 >
                   <Phone size={14} />
-                  +91 99999 99999
+                  {CLINIC.phone1}
                 </a>
-                <a href="mailto:info@sr3ent.com" style={{
+                <a href={`mailto:${CLINIC.email}`} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: 'var(--space-3)',
@@ -107,7 +115,7 @@ export default function Footer() {
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)'; }}
                 >
                   <Mail size={14} />
-                  info@sr3ent.com
+                  {CLINIC.email}
                 </a>
                 <div style={{
                   display: 'flex',
@@ -118,7 +126,54 @@ export default function Footer() {
                   fontFamily: 'var(--font-accent)',
                 }}>
                   <MapPin size={14} style={{ marginTop: 3, flexShrink: 0 }} />
-                  Lucknow, Uttar Pradesh, India
+                  {CLINIC.address.city}, {CLINIC.address.state}, {CLINIC.address.country}
+                </div>
+                {/* Social links */}
+                <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-2)' }}>
+                  <a href={CLINIC.social.facebook} target="_blank" rel="noopener noreferrer" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 32,
+                    height: 32,
+                    borderRadius: 'var(--radius-md)',
+                    background: 'rgba(255,255,255,0.1)',
+                    color: 'rgba(255,255,255,0.5)',
+                    transition: 'all var(--transition-fast)',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.15)';
+                    (e.currentTarget as HTMLElement).style.color = 'var(--gold-400)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.1)';
+                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
+                  }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  </a>
+                  <a href={CLINIC.social.instagram} target="_blank" rel="noopener noreferrer" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 32,
+                    height: 32,
+                    borderRadius: 'var(--radius-md)',
+                    background: 'rgba(255,255,255,0.1)',
+                    color: 'rgba(255,255,255,0.5)',
+                    transition: 'all var(--transition-fast)',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.15)';
+                    (e.currentTarget as HTMLElement).style.color = 'var(--gold-400)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.1)';
+                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
+                  }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -140,7 +195,7 @@ export default function Footer() {
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                 {specialties.map((s) => (
-                  <a key={s} href={`#${s.toLowerCase().replace(/\s+/g, '-')}`} style={{
+                  <Link key={s} to={`/services#${s.toLowerCase().replace(/\s+/g, '-')}`} style={{
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-accent)',
                     color: 'rgba(255,255,255,0.45)',
@@ -157,7 +212,7 @@ export default function Footer() {
                   }}
                   >
                     {s}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -179,12 +234,13 @@ export default function Footer() {
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                 {quickLinks.map((l) => (
-                  <a key={l} href={`#${l.toLowerCase().replace(/\s+/g, '-')}`} style={{
+                  <Link key={l.label} to={l.href} style={{
                     fontSize: 'var(--text-sm)',
                     fontFamily: 'var(--font-accent)',
                     color: 'rgba(255,255,255,0.45)',
                     transition: 'all var(--transition-fast)',
                     padding: '2px 0',
+                    textDecoration: 'none',
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.color = 'var(--gold-400)';
@@ -195,8 +251,8 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.transform = 'translateX(0)';
                   }}
                   >
-                    {l}
-                  </a>
+                    {l.label}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -248,7 +304,7 @@ export default function Footer() {
               </div>
 
               {/* CTA in footer */}
-              <a href="#appointment" style={{
+              <Link to="/appointment" style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -276,7 +332,7 @@ export default function Footer() {
               >
                 <Clock size={14} />
                 Book Appointment
-              </a>
+              </Link>
             </div>
           </div>
         </div>
