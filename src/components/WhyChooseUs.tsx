@@ -1,146 +1,131 @@
-import { motion } from "framer-motion";
-import { useInView } from "../hooks/useInView";
-import { Microscope, Users, HeartHandshake, FlaskConical } from "lucide-react";
+import { Stethoscope, Cpu, Scissors, HeartHandshake } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
 
-const features = [
+const reasons = [
   {
-    icon: Microscope,
-    title: "Advanced Endoscopic & Laser Technology",
-    desc: "State-of-the-art HD endoscopes, CO₂ laser systems, and laparoscopic suites for precise, minimally invasive procedures.",
+    Icon: Stethoscope,
+    title: 'Expert Specialists',
+    desc: 'Board-certified doctors with decades of experience across ENT, Surgery, Gynecology, and more. Trusted by 50,000+ patients.',
+    gradient: 'linear-gradient(135deg, var(--navy-50), var(--navy-100))',
+    iconColor: 'var(--navy-700)',
+    accent: 'var(--navy-900)',
   },
   {
-    icon: Users,
-    title: "Multispecialty Excellence",
-    desc: "Five specialities under one roof — ENT, surgery, obstetrics, physiotherapy and dietetics — ensuring seamless coordinated care.",
+    Icon: Cpu,
+    title: 'Advanced Equipment',
+    desc: 'State-of-the-art diagnostic and surgical technology including endoscopy, laser surgery, and digital imaging systems.',
+    gradient: 'linear-gradient(135deg, var(--teal-50), var(--teal-100))',
+    iconColor: 'var(--teal-600)',
+    accent: 'var(--teal-700)',
   },
   {
-    icon: HeartHandshake,
-    title: "Patient-Centric Approach",
-    desc: "Every treatment plan is tailored to the individual. We ensure clear communication, follow-up, and genuine support throughout your journey.",
+    Icon: Scissors,
+    title: 'Modern Surgical Care',
+    desc: 'Minimally invasive procedures with faster recovery. Our operation theatres meet international safety and hygiene standards.',
+    gradient: 'linear-gradient(135deg, var(--gold-50), var(--gold-100))',
+    iconColor: 'var(--gold-700)',
+    accent: 'var(--gold-800)',
   },
   {
-    icon: FlaskConical,
-    title: "Comprehensive Diagnostics",
-    desc: "On-site audiometry, blood analysis, blood pressure & sugar monitoring and nebulization — fast, accurate results without the referral wait.",
+    Icon: HeartHandshake,
+    title: 'Personalized Treatment',
+    desc: 'Every patient receives a customized care plan. From consultation to recovery, you get dedicated attention and follow-up.',
+    gradient: 'linear-gradient(135deg, #fef2f2, #fee2e2)',
+    iconColor: '#dc2626',
+    accent: '#991b1b',
   },
 ];
-
-const images = [
-  "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=600&q=80",
-];
-
-const tickerText =
-  "Relief from chronic ailments  ·  Safe post-operative care  ·  Expert second opinions for complex cases  ·  Advanced diagnostics on-site  ·  Compassionate multispecialty care  ·  ";
 
 export default function WhyChooseUs() {
-  const [ref, inView] = useInView();
+  const { ref, isInView } = useInView(0.1);
 
   return (
-    <section
-      id="why-choose-us"
-      className="pt-28 pb-0 bg-charcoal overflow-hidden"
-      ref={ref}
-    >
-      <div className="max-w-7xl mx-auto px-6 pb-28">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <p className="text-gold tracking-[0.3em] text-xs font-sans uppercase mb-4">
-            Why SR³
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-4">
-            The SR³ <span className="text-gold-gradient">Difference</span>
+    <section ref={ref} id="why-choose-us" style={{
+      padding: 'var(--space-20) 0',
+      background: 'var(--neutral-0)',
+      position: 'relative',
+    }}>
+      <div className="container">
+        <div style={{
+          textAlign: 'center', marginBottom: 'var(--space-12)',
+          opacity: isInView ? 1 : 0, transform: isInView ? 'translateY(0)' : 'translateY(24px)',
+          transition: 'all 0.7s ease-out',
+        }}>
+          <span style={{
+            display: 'inline-block', fontSize: 'var(--text-xs)', fontFamily: 'var(--font-accent)',
+            fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase',
+            color: 'var(--gold-600)', marginBottom: 'var(--space-3)',
+          }}>
+            Why Choose Us
+          </span>
+          <h2 style={{
+            fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--navy-900)',
+            marginBottom: 'var(--space-3)',
+          }}>
+            Healthcare That Puts You First
           </h2>
-          <div className="w-16 h-0.5 gold-gradient mx-auto mb-5" />
-          <p className="font-sans text-white/45 max-w-xl mx-auto text-sm leading-relaxed">
-            Excellence is not a department — it is embedded in everything we do.
+          <p style={{ fontSize: 'var(--text-base)', color: 'var(--neutral-500)', maxWidth: 520, margin: '0 auto' }}>
+            Four pillars that define the SR³ difference — expertise, technology, safety, and compassion.
           </p>
-        </motion.div>
-
-        {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 gap-14 items-start">
-          {/* Left: image masonry */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            <div className="col-span-2 rounded-2xl overflow-hidden border border-white/8 h-56">
-              <img
-                src={images[0]}
-                alt="Modern medical equipment"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-white/8 h-44">
-              <img
-                src={images[1]}
-                alt="Advanced diagnostics"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-white/8 h-44">
-              <img
-                src={images[2]}
-                alt="Clean clinical environment"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-
-          {/* Right: icon features */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.15 }}
-            className="space-y-6"
-          >
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
-                className="flex items-start gap-5 p-6 rounded-2xl border border-white/8 bg-white/3 hover:border-gold/30 hover:bg-white/5 transition-all duration-300"
-              >
-                <div className="w-11 h-11 rounded-xl bg-gold/15 flex items-center justify-center shrink-0">
-                  <f.icon className="w-5 h-5 text-gold" />
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg text-white mb-1.5">
-                    {f.title}
-                  </h3>
-                  <p className="font-sans text-white/50 text-sm leading-relaxed">
-                    {f.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
-      </div>
 
-      {/* Ticker banner */}
-      <div className="w-full gold-gradient py-4 overflow-hidden">
-        <div className="ticker-track">
-          {/* Doubled for seamless loop */}
-          {[tickerText, tickerText].map((t, idx) => (
-            <span
-              key={idx}
-              className="text-navy font-sans font-semibold text-sm tracking-wide whitespace-nowrap px-6"
-            >
-              {t}
-            </span>
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-6)',
+        }} className="wcu-grid">
+          {reasons.map((r, i) => (
+            <div key={r.title} style={{
+              padding: 'var(--space-8) var(--space-6)',
+              borderRadius: 'var(--radius-lg)',
+              background: 'var(--neutral-0)',
+              border: '1px solid var(--neutral-100)',
+              transition: 'all var(--transition-base)',
+              opacity: isInView ? 1 : 0,
+              transform: isInView ? 'translateY(0)' : 'translateY(24px)',
+              transitionDelay: isInView ? `${i * 100}ms` : '0ms',
+              position: 'relative', overflow: 'hidden',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-6px)';
+              e.currentTarget.style.boxShadow = '0 12px 40px rgba(15,30,61,0.1)';
+              e.currentTarget.style.borderColor = 'var(--neutral-200)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+              e.currentTarget.style.borderColor = 'var(--neutral-100)';
+            }}>
+              {/* Top accent line */}
+              <div style={{
+                position: 'absolute', top: 0, left: 0, right: 0, height: 3,
+                background: `linear-gradient(90deg, ${r.accent}, transparent)`,
+                opacity: 0, transition: 'opacity var(--transition-base)',
+              }} />
+              <div style={{
+                width: 56, height: 56, borderRadius: 'var(--radius-lg)',
+                background: r.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: 'var(--space-5)',
+              }}>
+                <r.Icon size={26} style={{ color: r.iconColor }} />
+              </div>
+              <h3 style={{
+                fontSize: 'var(--text-xl)', fontWeight: 600, color: 'var(--navy-900)',
+                marginBottom: 'var(--space-3)', lineHeight: 'var(--leading-snug)',
+                fontFamily: 'var(--font-heading)',
+              }}>
+                {r.title}
+              </h3>
+              <p style={{ fontSize: 'var(--text-sm)', color: 'var(--neutral-500)', lineHeight: 'var(--leading-relaxed)' }}>
+                {r.desc}
+              </p>
+            </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) { .wcu-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 640px) { .wcu-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </section>
   );
 }

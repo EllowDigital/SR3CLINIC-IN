@@ -1,328 +1,208 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "../hooks/useInView";
-import { MapPin, Phone, Info, Clock, Car, Bus, Train } from "lucide-react";
+import { Phone, MapPin, Mail, Clock } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
+import { CLINIC } from '../data/clinic';
 
-const departments = [
-  "ENT",
-  "General Surgery",
-  "Obstetrics & Gynaecology",
-  "Physiotherapy",
-  "Dietitian",
-];
-
-const transportInfo = [
+const contactCards = [
   {
-    icon: Car,
-    title: "By Car / Two-Wheeler",
-    desc: "Free parking is available within the Shivbalak Market complex adjacent to the clinic. Entry from Faizabad Road.",
+    Icon: Phone,
+    title: 'Phone',
+    lines: [CLINIC.phone1, CLINIC.phone2],
+    hrefs: [`tel:${CLINIC.phone1.replace(/\s+/g, '')}`, `tel:${CLINIC.phone2.replace(/\s+/g, '')}`],
+    color: 'var(--teal-600)',
+    bg: 'var(--teal-50)',
   },
   {
-    icon: Bus,
-    title: "By Bus / Auto",
-    desc: "Alight at Tiwariganj Bus Stop on Faizabad Road. The clinic is a 2-minute walk from the stop, opposite the Mahindra Showroom.",
+    Icon: Mail,
+    title: 'Email',
+    lines: [CLINIC.email],
+    hrefs: [`mailto:${CLINIC.email}`],
+    color: 'var(--navy-700)',
+    bg: 'var(--navy-50)',
   },
   {
-    icon: Train,
-    title: "By Metro / Rail",
-    desc: "Nearest metro station is Polytechnic (Lucknow Metro – Blue Line), approx. 1.5 km from the clinic. Auto-rickshaws available.",
+    Icon: MapPin,
+    title: 'Address',
+    lines: [CLINIC.address.street, CLINIC.address.area, `${CLINIC.address.city}, ${CLINIC.address.state}, ${CLINIC.address.country}`],
+    hrefs: ['https://maps.google.com/?q=SR3+ENT+Surgical+Centre+Lucknow'],
+    color: 'var(--gold-700)',
+    bg: 'var(--gold-50)',
+  },
+  {
+    Icon: Clock,
+    title: 'Working Hours',
+    lines: [CLINIC.hours.weekday, CLINIC.hours.sunday, `Emergency: ${CLINIC.hours.emergency}`],
+    hrefs: [],
+    color: '#059669',
+    bg: '#ecfdf5',
   },
 ];
 
 export default function ContactPage() {
-  const [ref, inView] = useInView();
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    date: "",
-    department: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const { ref: heroRef, isInView: heroInView } = useInView(0.1);
+  const { ref: cardsRef, isInView: cardsInView } = useInView(0.1);
 
   return (
-    <>
-      {/* Page Header */}
-      <div className="bg-navy pt-28 pb-16 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #D4A017 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <p className="text-gold tracking-[0.3em] text-xs font-sans uppercase mb-4">
-            Reach Us
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl text-white leading-tight mb-4">
-            Contact{" "}
-            <span className="text-gold-gradient">&amp; Appointments</span>
-          </h1>
-          <div className="w-16 h-0.5 gold-gradient mx-auto mb-5" />
-          <p className="font-sans text-white/55 text-base leading-relaxed max-w-2xl mx-auto">
-            We are conveniently located on Faizabad Road, Lucknow. Walk in or
-            call us to book your consultation.
-          </p>
+    <div>
+      {/* Page Hero */}
+      <section ref={heroRef} style={{
+        padding: 'var(--space-16) 0 var(--space-12)',
+        background: 'linear-gradient(160deg, #060c18 0%, #0f1e3d 40%, #1a3362 80%)',
+        position: 'relative', overflow: 'hidden',
+      }}>
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+          <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '50%', height: '120%', background: 'radial-gradient(ellipse, rgba(230,168,23,0.05) 0%, transparent 60%)' }} />
         </div>
-      </div>
-
-      {/* Main contact section */}
-      <section ref={ref} className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left: Location */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="space-y-5"
-            >
-              {/* Info cards */}
-              <div className="bg-clinical-white rounded-2xl p-6 border border-gray-100 shadow-sm space-y-5">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4 text-gold" />
-                  </div>
-                  <div>
-                    <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
-                      Address
-                    </p>
-                    <p className="font-sans text-navy text-sm font-medium leading-relaxed">
-                      Shivbalak Market, Opp. Mahindra Showroom,
-                      <br />
-                      Tiwariganj, Faizabad Road, Lucknow
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-4 h-4 text-gold" />
-                  </div>
-                  <div>
-                    <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
-                      Phone
-                    </p>
-                    <a
-                      href="tel:+919369643922"
-                      className="block font-sans text-navy text-sm font-medium hover:text-gold transition-colors"
-                    >
-                      +91 9369643922
-                    </a>
-                    <a
-                      href="tel:+918858580214"
-                      className="block font-sans text-navy text-sm font-medium hover:text-gold transition-colors"
-                    >
-                      +91 8858580214
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
-                    <Clock className="w-4 h-4 text-gold" />
-                  </div>
-                  <div>
-                    <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
-                      OPD Hours
-                    </p>
-                    <p className="font-sans text-navy text-sm font-medium">
-                      Mon–Sat: 9:00 AM – 7:00 PM
-                    </p>
-                    <p className="font-sans text-gray-400 text-xs mt-0.5">
-                      Emergency available 24/7 on call
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
-                    <Info className="w-4 h-4 text-gold" />
-                  </div>
-                  <div>
-                    <p className="font-sans text-gray-400 text-xs uppercase tracking-wide mb-0.5">
-                      Nearby Landmarks
-                    </p>
-                    <p className="font-sans text-navy text-sm">
-                      BBD · Polytechnic · Kamta Chauraha
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Map */}
-              <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-64">
-                <iframe
-                  title="SR³ ENT Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.4793!2d81.0458!3d26.8800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTHVja25vdw!5e0!3m2!1sen!2sin!4v1688000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, filter: "grayscale(70%) contrast(1.05)" }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </motion.div>
-
-            {/* Right: Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-            >
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center h-full text-center p-12 bg-clinical-white rounded-2xl border border-gray-100 shadow-sm">
-                  <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-6">
-                    <Phone className="w-8 h-8 text-gold" />
-                  </div>
-                  <h3 className="font-serif text-2xl text-navy mb-3">
-                    Request Received
-                  </h3>
-                  <p className="font-sans text-gray-500 text-sm leading-relaxed">
-                    Our team will call you within one business hour to confirm
-                    your appointment.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="bg-clinical-white rounded-2xl p-8 border border-gray-100 shadow-sm space-y-5"
-                >
-                  <div>
-                    <h3 className="font-serif text-2xl text-navy mb-1">
-                      Book an Appointment
-                    </h3>
-                    <p className="font-sans text-gray-400 text-xs mb-2">
-                      Fill the form — we will call you back promptly.
-                    </p>
-                  </div>
-
-                  {[
-                    {
-                      id: "name",
-                      label: "Full Name",
-                      type: "text",
-                      placeholder: "Your full name",
-                    },
-                    {
-                      id: "phone",
-                      label: "Phone Number",
-                      type: "tel",
-                      placeholder: "+91 XXXXX XXXXX",
-                    },
-                  ].map(({ id, label, type, placeholder }) => (
-                    <div key={id}>
-                      <label className="block font-sans text-gray-600 text-xs mb-1.5 font-medium uppercase tracking-wide">
-                        {label}
-                      </label>
-                      <input
-                        type={type}
-                        placeholder={placeholder}
-                        value={(form as Record<string, string>)[id]}
-                        onChange={(e) =>
-                          setForm({ ...form, [id]: e.target.value })
-                        }
-                        required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 font-sans text-sm text-navy placeholder-gray-400 focus:outline-none focus:border-gold transition-colors bg-white"
-                      />
-                    </div>
-                  ))}
-
-                  <div>
-                    <label className="block font-sans text-gray-600 text-xs mb-1.5 font-medium uppercase tracking-wide">
-                      Preferred Date
-                    </label>
-                    <input
-                      type="date"
-                      value={form.date}
-                      onChange={(e) =>
-                        setForm({ ...form, date: e.target.value })
-                      }
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 font-sans text-sm text-navy focus:outline-none focus:border-gold transition-colors bg-white"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-sans text-gray-600 text-xs mb-1.5 font-medium uppercase tracking-wide">
-                      Department
-                    </label>
-                    <select
-                      value={form.department}
-                      onChange={(e) =>
-                        setForm({ ...form, department: e.target.value })
-                      }
-                      required
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 font-sans text-sm text-navy focus:outline-none focus:border-gold transition-colors bg-white"
-                    >
-                      <option value="">Select a department…</option>
-                      {departments.map((d) => (
-                        <option key={d} value={d}>
-                          {d}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 gold-gradient text-navy font-sans font-bold text-sm rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-gold/25 tracking-wide"
-                  >
-                    Request Priority Callback
-                  </button>
-                </form>
-              )}
-            </motion.div>
-          </div>
+        <div className="container" style={{ position: 'relative', zIndex: 2, opacity: heroInView ? 1 : 0, transform: heroInView ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.7s ease-out' }}>
+          <span style={{ display: 'inline-block', fontSize: 'var(--text-xs)', fontFamily: 'var(--font-accent)', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold-400)', marginBottom: 'var(--space-3)' }}>Get In Touch</span>
+          <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: 'var(--neutral-0)', marginBottom: 'var(--space-4)' }}>
+            Contact Us
+          </h1>
+          <p style={{ fontSize: 'var(--text-lg)', color: 'rgba(255,255,255,0.5)', maxWidth: 600 }}>
+            We're here to help. Reach us by phone, email, or visit us at our clinic on Faizabad Road.
+          </p>
         </div>
       </section>
 
-      {/* Transport & Accessibility */}
-      <section className="py-20 bg-clinical-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-12"
-          >
-            <p className="text-gold tracking-[0.3em] text-xs font-sans uppercase mb-4">
-              Getting Here
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-navy leading-tight mb-4">
-              Transport{" "}
-              <span className="text-gold-gradient">&amp; Accessibility</span>
-            </h2>
-            <div className="w-16 h-0.5 gold-gradient mx-auto" />
-          </motion.div>
-
-          <div className="grid sm:grid-cols-3 gap-6">
-            {transportInfo.map((t, i) => (
-              <motion.div
-                key={t.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
-                className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
-                  <t.icon className="w-6 h-6 text-gold" />
+      {/* Contact Cards */}
+      <section ref={cardsRef} style={{ padding: 'var(--space-16) 0', background: 'var(--neutral-0)' }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-5)' }} className="contact-cards-grid">
+            {contactCards.map((card, i) => (
+              <div key={card.title} style={{
+                padding: 'var(--space-6)', borderRadius: 'var(--radius-lg)',
+                background: 'var(--neutral-0)', border: '1px solid var(--neutral-100)',
+                transition: 'all var(--transition-base)',
+                opacity: cardsInView ? 1 : 0, transform: cardsInView ? 'translateY(0)' : 'translateY(20px)',
+                transitionDelay: `${i * 80}ms`,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = 'var(--shadow-md)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
+                  <div style={{
+                    width: 44, height: 44, borderRadius: 'var(--radius-md)',
+                    background: card.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                  }}>
+                    <card.Icon size={20} style={{ color: card.color }} />
+                  </div>
+                  <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--navy-900)', fontFamily: 'var(--font-heading)' }}>{card.title}</h3>
                 </div>
-                <h3 className="font-serif text-lg text-navy mb-2">{t.title}</h3>
-                <p className="font-sans text-gray-500 text-sm leading-relaxed">
-                  {t.desc}
-                </p>
-              </motion.div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                  {card.lines.map((line, li) => (
+                    card.hrefs[li] ? (
+                      <a key={line} href={card.hrefs[li]} target={card.hrefs[li].startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" style={{
+                        fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)', color: 'var(--navy-800)', fontWeight: 500,
+                        transition: 'color var(--transition-fast)',
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.color = card.color; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = 'var(--navy-800)'; }}>
+                        {line}
+                      </a>
+                    ) : (
+                      <div key={line} style={{ fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)', color: line.includes('Emergency') ? '#dc2626' : 'var(--navy-800)', fontWeight: line.includes('Emergency') ? 600 : 500 }}>
+                        {line}
+                      </div>
+                    )
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
-    </>
+
+      {/* Map */}
+      <section style={{ padding: '0 0 var(--space-16)', background: 'var(--neutral-0)' }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <div style={{
+            borderRadius: 'var(--radius-lg)', overflow: 'hidden',
+            border: '1px solid var(--neutral-100)', boxShadow: 'var(--shadow-sm)',
+          }}>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.5!2d81.0!3d26.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUxJzAwLjAiTiA4McKwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1"
+              width="100%"
+              height="360"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="SR³ ENT & Surgical Centre Location"
+            />
+          </div>
+          <div style={{ marginTop: 'var(--space-4)', textAlign: 'center' }}>
+            <a href="https://maps.google.com/?q=SR3+ENT+Surgical+Centre+Tiwariganj+Faizabad+Road+Lucknow" target="_blank" rel="noopener noreferrer" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+              fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)', fontWeight: 500,
+              color: 'var(--navy-700)', transition: 'color var(--transition-fast)',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.color = 'var(--gold-600)'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'var(--navy-700)'; }}>
+              <MapPin size={14} /> Get Directions on Google Maps
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Social */}
+      <section style={{ padding: 'var(--space-12) 0', background: 'var(--neutral-50)' }}>
+        <div className="container" style={{ maxWidth: 600, textAlign: 'center' }}>
+          <h3 style={{ fontSize: 'var(--text-xl)', fontWeight: 600, color: 'var(--navy-900)', fontFamily: 'var(--font-heading)', marginBottom: 'var(--space-5)' }}>Follow Us</h3>
+          <p style={{ fontSize: 'var(--text-sm)', color: 'var(--neutral-500)', marginBottom: 'var(--space-6)' }}>
+            Stay updated with health tips, patient stories, and clinic news.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)' }}>
+            <a href={CLINIC.social.facebook} target="_blank" rel="noopener noreferrer" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+              padding: '12px var(--space-6)', borderRadius: 'var(--radius-full)',
+              background: 'var(--neutral-0)', border: '1px solid var(--neutral-200)',
+              fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)', fontWeight: 500,
+              color: 'var(--navy-800)', transition: 'all var(--transition-base)',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#1877f2'; e.currentTarget.style.color = '#1877f2'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; e.currentTarget.style.color = 'var(--navy-800)'; }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook
+            </a>
+            <a href={CLINIC.social.instagram} target="_blank" rel="noopener noreferrer" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+              padding: '12px var(--space-6)', borderRadius: 'var(--radius-full)',
+              background: 'var(--neutral-0)', border: '1px solid var(--neutral-200)',
+              fontSize: 'var(--text-sm)', fontFamily: 'var(--font-accent)', fontWeight: 500,
+              color: 'var(--navy-800)', transition: 'all var(--transition-base)',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#e1306c'; e.currentTarget.style.color = '#e1306c'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--neutral-200)'; e.currentTarget.style.color = 'var(--navy-800)'; }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg> Instagram
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section style={{ padding: 'var(--space-16) 0', background: 'var(--neutral-0)', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: 600 }}>
+          <h2 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 700, color: 'var(--navy-900)', marginBottom: 'var(--space-4)' }}>
+            Prefer to Talk to Someone?
+          </h2>
+          <p style={{ fontSize: 'var(--text-base)', color: 'var(--neutral-500)', marginBottom: 'var(--space-6)' }}>
+            Our care coordinators are available to answer your questions and help you schedule a visit.
+          </p>
+          <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
+            display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+            padding: '14px var(--space-8)', borderRadius: 'var(--radius-full)',
+            background: 'linear-gradient(135deg, var(--gold-500), var(--gold-600))',
+            color: 'var(--navy-950)', fontSize: 'var(--text-base)', fontWeight: 600,
+            fontFamily: 'var(--font-accent)', boxShadow: '0 4px 24px rgba(230,168,23,0.35)',
+            transition: 'all var(--transition-base)',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}>
+            <Phone size={18} /> Call: {CLINIC.phone1}
+          </a>
+        </div>
+      </section>
+
+      <style>{`
+        @media (max-width: 640px) { .contact-cards-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+    </div>
   );
 }
