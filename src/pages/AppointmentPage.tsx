@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CalendarCheck, Phone, Clock, Shield, CheckCircle } from 'lucide-react';
+import { CalendarCheck, Phone, Clock, Shield, CircleCheck as CheckCircle } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import { CLINIC, SERVICES } from '../data/clinic';
 

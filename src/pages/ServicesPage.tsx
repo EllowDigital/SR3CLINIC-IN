@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import { SERVICES, CLINIC } from '../data/clinic';
 import { Ear, ScissorsLineDashed, Monitor, Baby, Activity, Apple } from 'lucide-react';
