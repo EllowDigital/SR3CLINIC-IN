@@ -8,11 +8,16 @@ import PatientJourney from './components/PatientJourney';
 import ClinicFacilities from './components/ClinicFacilities';
 import EmergencyBanner from './components/EmergencyBanner';
 import Testimonials from './components/Testimonials';
+import PatientSuccessStories from './components/PatientSuccessStories';
+import StatisticsCounter from './components/StatisticsCounter';
+import WhyTrustUs from './components/WhyTrustUs';
 import FAQ from './components/FAQ';
 import AppointmentCTA from './components/AppointmentCTA';
 import QuickContact from './components/QuickContact';
 import FloatingAppointment from './components/FloatingAppointment';
+import StickyMobileBar from './components/StickyMobileBar';
 import Footer from './components/Footer';
+import { ToastProvider } from './components/ToastNotification';
 import AboutPage from './pages/AboutPage';
 import DoctorsPage from './pages/DoctorsPage';
 import ServicesPage from './pages/ServicesPage';
@@ -25,7 +30,7 @@ import { useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior }); }, [pathname]);
   return null;
 }
 
@@ -33,11 +38,14 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <StatisticsCounter />
       <WhyChooseUs />
       <ServicesOverview />
       <MeetOurDoctors />
+      <PatientSuccessStories />
       <PatientJourney />
       <ClinicFacilities />
+      <WhyTrustUs />
       <EmergencyBanner />
       <Testimonials />
       <FAQ />
@@ -50,20 +58,23 @@ function HomePage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/doctors" element={<DoctorsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/appointment" element={<AppointmentPage />} />
-        </Routes>
-      </main>
-      <Footer />
-      <FloatingAppointment />
+      <ToastProvider>
+        <ScrollToTop />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/doctors" element={<DoctorsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/appointment" element={<AppointmentPage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <FloatingAppointment />
+        <StickyMobileBar />
+      </ToastProvider>
     </BrowserRouter>
   );
 }
