@@ -25,6 +25,7 @@ const DoctorsPage = lazy(() => import('./pages/DoctorsPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const AppointmentPage = lazy(() => import('./pages/AppointmentPage'));
+const FacilitiesPage = lazy(() => import('./pages/FacilitiesPage'));
 
 // Service pages
 const EntPage = lazy(() => import('./pages/services/EntPage'));
@@ -93,6 +94,7 @@ export default function App() {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/appointment" element={<AppointmentPage />} />
+              <Route path="/facilities" element={<FacilitiesPage />} />
               <Route path="/services/ent" element={<EntPage />} />
               <Route path="/services/general-surgery" element={<GeneralSurgeryPage />} />
               <Route path="/services/laparoscopic-surgery" element={<LaparoscopicSurgeryPage />} />
