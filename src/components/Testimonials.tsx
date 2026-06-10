@@ -51,7 +51,7 @@ export default function Testimonials() {
   const { ref, isInView } = useInView(0.08);
   const [start, setStart] = useState(0);
   const [animDir, setAnimDir] = useState<'left' | 'right' | null>(null);
-  const autoRef = useRef<ReturnType<typeof setInterval>>();
+  const autoRef = useRef<ReturnType<typeof setInterval>>(null);
 
   const VISIBLE = 3;
   const maxStart = testimonials.length - VISIBLE;
@@ -69,7 +69,7 @@ export default function Testimonials() {
       const next = start + 1 > maxStart ? 0 : start + 1;
       goTo(next, 'left');
     }, 5500);
-    return () => clearInterval(autoRef.current);
+    return () => clearInterval(autoRef.current!);
   }, [start]);
 
   return (

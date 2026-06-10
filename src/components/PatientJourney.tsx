@@ -81,7 +81,7 @@ export default function PatientJourney() {
         }} className="journey-grid">
           {/* Connecting line */}
           <div style={{
-            position: 'absolute', top: 44, left: '12.5%', right: '12.5%', height: 2,
+            position: 'absolute', top: 36, left: '12.5%', right: '12.5%', height: 2,
             background: 'linear-gradient(90deg, rgba(255,255,255,0.05), rgba(230,168,23,0.15), rgba(255,255,255,0.05))',
           }} className="journey-line" />
 
@@ -93,7 +93,7 @@ export default function PatientJourney() {
             }}>
               {/* Step number circle */}
               <div style={{
-                width: 80, height: 80, borderRadius: '50%', margin: '0 auto var(--space-5)',
+                width: 64, height: 64, borderRadius: '50%', margin: '0 auto var(--space-4)',
                 background: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.08)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 position: 'relative', zIndex: 2,
@@ -107,7 +107,7 @@ export default function PatientJourney() {
                 e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
                 e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
               }}>
-                <s.Icon size={28} style={{ color: 'var(--gold-400)' }} />
+                <s.Icon size={24} style={{ color: 'var(--gold-400)' }} />
                 <span style={{
                   position: 'absolute', top: -8, right: -4,
                   width: 24, height: 24, borderRadius: '50%',

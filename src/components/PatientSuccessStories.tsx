@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useInView } from '../hooks/useInView';
-import { Star, Quote, ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
+import { Star, Quote, ChevronLeft, ChevronRight, CircleCheck as CheckCircle } from 'lucide-react';
 
 const stories = [
   {
@@ -87,7 +87,7 @@ export default function PatientSuccessStories() {
   const { ref, isInView } = useInView(0.08);
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const autoRef = useRef<ReturnType<typeof setInterval>>();
+  const autoRef = useRef<ReturnType<typeof setInterval>>(null);
 
   const goTo = (idx: number) => {
     if (animating) return;
@@ -103,7 +103,7 @@ export default function PatientSuccessStories() {
 
   useEffect(() => {
     autoRef.current = setInterval(next, 6000);
-    return () => clearInterval(autoRef.current);
+    return () => clearInterval(autoRef.current!);
   }, [active]);
 
   const s = stories[active];

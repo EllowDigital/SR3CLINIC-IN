@@ -4,17 +4,11 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhyChooseUs from './components/WhyChooseUs';
 import ServicesOverview from './components/ServicesOverview';
-import MeetOurDoctors from './components/MeetOurDoctors';
 import PatientJourney from './components/PatientJourney';
-import ClinicFacilities from './components/ClinicFacilities';
 import EmergencyBanner from './components/EmergencyBanner';
 import Testimonials from './components/Testimonials';
-import PatientSuccessStories from './components/PatientSuccessStories';
-import StatisticsCounter from './components/StatisticsCounter';
-import WhyTrustUs from './components/WhyTrustUs';
 import FAQ from './components/FAQ';
 import AppointmentCTA from './components/AppointmentCTA';
-import QuickContact from './components/QuickContact';
 import FloatingAppointment from './components/FloatingAppointment';
 import StickyMobileBar from './components/StickyMobileBar';
 import SkipLink from './components/SkipLink';
@@ -64,18 +58,13 @@ function HomePage() {
   return (
     <>
       <Hero />
-      {/* <StatisticsCounter /> */}
       <WhyChooseUs />
       <ServicesOverview />
-      {/* <MeetOurDoctors /> */}
       <PatientJourney />
-      <ClinicFacilities />
-      <WhyTrustUs />
       <EmergencyBanner />
       <Testimonials />
       <FAQ />
       <AppointmentCTA />
-      <QuickContact />
     </>
   );
 }

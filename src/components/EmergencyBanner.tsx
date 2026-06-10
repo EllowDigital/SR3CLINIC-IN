@@ -17,10 +17,10 @@ export default function EmergencyBanner() {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
       </div>
 
-      <div className="container" style={{
+      <div className="container emergency-inner" style={{
         position: 'relative', zIndex: 2,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        gap: 'var(--space-6)', flexWrap: 'wrap',
+        gap: 'var(--space-5)', flexWrap: 'wrap',
         opacity: isInView ? 1 : 0, transform: isInView ? 'translateY(0)' : 'translateY(16px)',
         transition: 'all 0.6s ease-out',
       }}>
@@ -49,13 +49,13 @@ export default function EmergencyBanner() {
           </div>
         </div>
 
-        <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
-          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-3)',
-          padding: '14px var(--space-8)', borderRadius: 'var(--radius-full)',
+        <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} className="emergency-call-btn" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+          padding: '12px var(--space-6)', borderRadius: 'var(--radius-full)',
           background: 'rgba(255,255,255,0.95)', color: '#991b1b',
-          fontSize: 'var(--text-base)', fontWeight: 700, fontFamily: 'var(--font-accent)',
+          fontSize: 'var(--text-sm)', fontWeight: 700, fontFamily: 'var(--font-accent)',
           boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-          transition: 'all var(--transition-base)', flexShrink: 0,
+          transition: 'all var(--transition-base)', flexShrink: 0, textDecoration: 'none',
         }}
         onMouseEnter={e => {
           e.currentTarget.style.transform = 'translateY(-2px)';
@@ -65,8 +65,8 @@ export default function EmergencyBanner() {
           e.currentTarget.style.transform = 'translateY(0)';
           e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
         }}>
-          <Phone size={20} />
-          Call Now: {CLINIC.phone1}
+          <Phone size={18} />
+          Call: {CLINIC.phone1}
         </a>
       </div>
     </section>
