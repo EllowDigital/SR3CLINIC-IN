@@ -70,10 +70,10 @@ function HomePage() {
       <WhyChooseUs />
       <ServicesOverview />
       <PatientJourney />
-      <EmergencyBanner />
       <Testimonials />
       <FAQ />
       <AppointmentCTA />
+      <EmergencyBanner />
     </>
   );
 }
