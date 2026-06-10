@@ -64,11 +64,10 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <StatisticsCounter />
+      {/* <StatisticsCounter /> */}
       <WhyChooseUs />
       <ServicesOverview />
-      <MeetOurDoctors />
-      <PatientSuccessStories />
+      {/* <MeetOurDoctors /> */}
       <PatientJourney />
       <ClinicFacilities />
       <WhyTrustUs />
