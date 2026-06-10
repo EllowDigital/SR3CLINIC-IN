@@ -4,6 +4,15 @@ import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useScrollPosition } from '../hooks/useScrollPosition';
 import { CLINIC } from '../data/clinic';
 
+const serviceSlugMap: Record<string, string> = {
+  'ENT': '/services/ent',
+  'General Surgery': '/services/general-surgery',
+  'Laparoscopic Surgery': '/services/laparoscopic-surgery',
+  'Gynecology': '/services/gynecology',
+  'Physiotherapy': '/services/physiotherapy',
+  'Diet Consultation': '/services/diet-consultation',
+};
+
 const navLinks = [
   {
     label: 'Specialities',
@@ -203,7 +212,7 @@ export default function Navbar() {
                     animation: 'fadeInUp 0.2s ease-out',
                   }}>
                     {link.submenu.map((item) => (
-                      <Link key={item} to={`/services#${item.toLowerCase().replace(/\s+/g, '-')}`} onClick={() => { setActiveSubmenu(null); setMobileOpen(false); }} style={{
+                      <Link key={item} to={serviceSlugMap[item] || `/services#${item.toLowerCase().replace(/\s+/g, '-')}`} onClick={() => { setActiveSubmenu(null); setMobileOpen(false); }} style={{
                         display: 'block',
                         padding: 'var(--space-2) var(--space-3)',
                         borderRadius: 'var(--radius-sm)',
@@ -330,7 +339,7 @@ export default function Navbar() {
                 {link.submenu && (
                   <div style={{ paddingLeft: 'var(--space-4)' }}>
                     {link.submenu.map((item) => (
-                      <Link key={item} to={`/services#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                      <Link key={item} to={serviceSlugMap[item] || `/services#${item.toLowerCase().replace(/\s+/g, '-')}`}
                         onClick={() => setMobileOpen(false)}
                         style={{
                           display: 'block',

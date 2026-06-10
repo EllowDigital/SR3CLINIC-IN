@@ -26,6 +26,14 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const AppointmentPage = lazy(() => import('./pages/AppointmentPage'));
 
+// Service pages
+const EntPage = lazy(() => import('./pages/services/EntPage'));
+const GeneralSurgeryPage = lazy(() => import('./pages/services/GeneralSurgeryPage'));
+const LaparoscopicSurgeryPage = lazy(() => import('./pages/services/LaparoscopicSurgeryPage'));
+const GynecologyPage = lazy(() => import('./pages/services/GynecologyPage'));
+const PhysiotherapyPage = lazy(() => import('./pages/services/PhysiotherapyPage'));
+const DietConsultationPage = lazy(() => import('./pages/services/DietConsultationPage'));
+
 function PageLoader() {
   return (
     <div style={{
@@ -85,6 +93,12 @@ export default function App() {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/appointment" element={<AppointmentPage />} />
+              <Route path="/services/ent" element={<EntPage />} />
+              <Route path="/services/general-surgery" element={<GeneralSurgeryPage />} />
+              <Route path="/services/laparoscopic-surgery" element={<LaparoscopicSurgeryPage />} />
+              <Route path="/services/gynecology" element={<GynecologyPage />} />
+              <Route path="/services/physiotherapy" element={<PhysiotherapyPage />} />
+              <Route path="/services/diet-consultation" element={<DietConsultationPage />} />
             </Routes>
           </Suspense>
         </main>
