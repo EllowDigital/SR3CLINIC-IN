@@ -224,3 +224,176 @@ export const SERVICES = [
     accent: '#047857',
   },
 ] as const;
+
+export const SERVICE_DETAILS: Record<string, {
+  heroDesc: string;
+  aboutDesc: string;
+  benefits: string[];
+  conditions: string[];
+  symptoms: string[];
+  whenToConsult: string[];
+  treatments: { title: string; desc: string }[];
+  faqs: { q: string; a: string }[];
+  seoTitle: string;
+  seoDescription: string;
+  seoKeywords: string;
+  slug: string;
+  doctorIndex: number;
+}> = {
+  ent: {
+    heroDesc: 'Expert ENT care in Lucknow — from routine consultations to advanced endoscopic sinus surgery, delivered with precision and compassion.',
+    aboutDesc: 'Our ENT department provides comprehensive ear, nose, and throat care using the latest diagnostic tools and endoscopic technology. Whether it\'s a persistent sinus infection, hearing difficulty, or a complex airway issue, our specialist delivers accurate diagnoses and effective treatment plans tailored to each patient.',
+    benefits: ['Advanced endoscopic technology for precise diagnosis', 'Minimally invasive surgical techniques for faster recovery', 'Child-friendly pediatric ENT care', 'Comprehensive hearing assessment and solutions', 'Personalized treatment plans for chronic conditions'],
+    conditions: ['Chronic Sinusitis', 'Tonsillitis & Adenoid Infections', 'Nasal Polyps', 'Deviated Septum', 'Hearing Loss', 'Ear Infections', 'Voice & Swallowing Disorders', 'Allergic Rhinitis', 'Sleep Apnea & Snoring'],
+    symptoms: ['Persistent nasal congestion or blockage', 'Recurrent sore throat or tonsil infections', 'Difficulty hearing or ringing in ears', 'Chronic facial pain or pressure', 'Persistent cough or post-nasal drip', 'Frequent nosebleeds', 'Voice changes lasting more than 2 weeks'],
+    whenToConsult: ['Sinus symptoms lasting more than 12 weeks', 'Recurrent tonsil infections (5+ per year)', 'Sudden or gradual hearing loss', 'Persistent ear pain or discharge', 'Difficulty swallowing that persists', 'Snoring with breathing pauses during sleep'],
+    treatments: [
+      { title: 'Endoscopic Sinus Surgery', desc: 'Minimally invasive procedure to clear blocked sinuses and restore normal drainage using high-definition endoscopes.' },
+      { title: 'Tonsillectomy & Adenoidectomy', desc: 'Surgical removal of infected tonsils or adenoids, often recommended for recurrent infections or breathing difficulties.' },
+      { title: 'Septoplasty', desc: 'Correction of a deviated nasal septum to improve airflow and relieve chronic congestion.' },
+      { title: 'Hearing Assessment & Solutions', desc: 'Comprehensive audiometric testing and personalized treatment including hearing aids and medical management.' },
+    ],
+    faqs: [
+      { q: 'How long does recovery take after endoscopic sinus surgery?', a: 'Most patients return to normal activities within 7-10 days. Full healing of the sinus lining may take 3-4 weeks. Our specialist provides detailed post-operative care instructions and follow-up visits.' },
+      { q: 'Is tonsillectomy painful?', a: 'There is discomfort for 7-14 days after surgery, managed effectively with prescribed medication. Adults may experience a slightly longer recovery than children. Our team ensures you have adequate pain management throughout.' },
+      { q: 'When should I see an ENT for hearing problems?', a: 'Consult an ENT if you experience sudden hearing loss, persistent ear fullness, ringing (tinnitus), or if you find yourself asking people to repeat themselves frequently. Early evaluation leads to better outcomes.' },
+      { q: 'Can nasal polyps be treated without surgery?', a: 'Small polyps often respond to steroid nasal sprays and medications. However, large or persistent polyps that don\'t respond to medical treatment may require endoscopic removal for lasting relief.' },
+      { q: 'Do you treat pediatric ENT conditions?', a: 'Yes, Dr. Samvartika has extensive experience with pediatric ENT cases including tonsillitis, adenoid issues, ear infections, and congenital conditions. Our child-friendly approach puts young patients at ease.' },
+    ],
+    seoTitle: 'ENT Specialist in Lucknow | Ear, Nose & Throat Doctor | SR3 ENT & Surgical Centre',
+    seoDescription: 'Best ENT specialist in Lucknow. Dr. Samvartika provides expert care for sinusitis, tonsillitis, hearing loss, nasal polyps & more. Advanced endoscopic surgery. Book: +91 9369643922.',
+    seoKeywords: 'ENT specialist in Lucknow, ENT doctor Lucknow, sinus surgery Lucknow, tonsillectomy Lucknow, hearing specialist Lucknow, ear nose throat doctor Lucknow, endoscopic sinus surgery Lucknow',
+    slug: 'ent',
+    doctorIndex: 0,
+  },
+  'general-surgery': {
+    heroDesc: 'Trusted general surgical care in Lucknow — from hernia repair to complex abdominal surgery, performed by a fellowship-trained surgeon with outstanding outcomes.',
+    aboutDesc: 'Our general surgery department covers a broad range of surgical conditions with expertise in both open and minimally invasive techniques. Dr. R.K. Vishwakarma brings multiple fellowships (FIAGES, DIPMAS, FISCP) and years of experience to every procedure, ensuring precise execution and compassionate care throughout your surgical journey.',
+    benefits: ['Fellowship-trained surgeon with multiple credentials', 'Both open and laparoscopic surgical options', 'Transparent pricing with no hidden charges', 'Comprehensive pre-operative counseling', 'Dedicated post-operative care and follow-up', 'Emergency surgical services available 24/7'],
+    conditions: ['Hernia (Inguinal, Femoral, Umbilical)', 'Gallbladder Stones & Disease', 'Appendicitis', 'Thyroid Disorders', 'Piles (Hemorrhoids) & Fistula', 'Breast Lumps & Abnormalities', 'Abscesses & Wound Infections', 'Trauma & Emergency Conditions'],
+    symptoms: ['Noticeable bulge in the abdomen or groin area', 'Severe right-side abdominal pain', 'Persistent constipation or bleeding during bowel movement', 'Swelling or lump in the neck', 'Painful, swollen area with redness or warmth', 'Unexplained breast lump or changes'],
+    whenToConsult: ['Any visible or painful hernia bulge', 'Severe abdominal pain with fever or nausea', 'Persistent rectal bleeding', 'Rapidly growing neck swelling', 'Signs of infection: redness, warmth, pus', 'Trauma requiring emergency surgical evaluation'],
+    treatments: [
+      { title: 'Hernia Repair', desc: 'Both open and laparoscopic hernia repair techniques available. Minimally invasive options offer smaller incisions, less pain, and faster return to daily activities.' },
+      { title: 'Gallbladder Surgery (Cholecystectomy)', desc: 'Removal of the gallbladder, most commonly performed laparoscopically for gallstones causing pain, inflammation, or infection.' },
+      { title: 'Appendectomy', desc: 'Emergency or scheduled removal of an inflamed appendix, typically performed laparoscopically for quicker recovery.' },
+      { title: 'Thyroid Surgery', desc: 'Partial or total thyroidectomy for nodules, goiter, or thyroid cancer, performed with careful nerve preservation techniques.' },
+    ],
+    faqs: [
+      { q: 'How do I know if I need surgery for my hernia?', a: 'Most hernias eventually require surgical repair to prevent complications like strangulation. If you notice a bulge that hurts, grows, or cannot be pushed back in, consult our surgeon for evaluation.' },
+      { q: 'What is the recovery time for gallbladder surgery?', a: 'Laparoscopic cholecystectomy typically allows patients to go home the same or next day. Most people return to normal activities within 1-2 weeks.' },
+      { q: 'Is laparoscopic surgery safer than open surgery?', a: 'Both are safe when performed by an experienced surgeon. Laparoscopic surgery offers smaller incisions, less pain, shorter hospital stay, and faster recovery.' },
+      { q: 'Do you handle emergency surgical cases?', a: 'Yes, we provide 24/7 emergency surgical services. Call our emergency line for immediate assistance.' },
+      { q: 'What should I expect during pre-operative consultation?', a: 'Dr. Vishwakarma will review your medical history, explain the procedure in detail, discuss risks and benefits, answer all your questions, and provide clear preparation instructions.' },
+    ],
+    seoTitle: 'General Surgeon in Lucknow | Hernia, Gallbladder, Appendix Surgery | SR3 ENT & Surgical Centre',
+    seoDescription: 'Expert general surgeon in Lucknow. Dr. R.K. Vishwakarma (FIAGES, DIPMAS) performs hernia repair, gallbladder surgery, appendectomy & more. Book: +91 9369643922.',
+    seoKeywords: 'general surgeon in Lucknow, hernia surgery Lucknow, gallbladder surgery Lucknow, appendectomy Lucknow, laparoscopic surgeon Lucknow, piles treatment Lucknow, thyroid surgery Lucknow',
+    slug: 'general-surgery',
+    doctorIndex: 1,
+  },
+  'laparoscopic-surgery': {
+    heroDesc: 'Minimally invasive surgical excellence in Lucknow — smaller incisions, less pain, faster recovery. Performed by a fellowship-trained laparoscopic specialist.',
+    aboutDesc: 'Laparoscopic surgery (also called keyhole surgery) uses small incisions and a camera to perform procedures with precision. Dr. R.K. Vishwakarma — holding FIAGES and DIPMAS fellowships — delivers outstanding outcomes using the latest minimally invasive techniques, meaning you spend less time in hospital and more time recovering comfortably at home.',
+    benefits: ['Incisions as small as 5-10mm vs 10-15cm in open surgery', 'Significantly less post-operative pain', 'Shorter hospital stay (often same-day discharge)', 'Faster return to work and daily activities', 'Minimal scarring and better cosmetic outcome', 'Lower risk of wound infections and hernias'],
+    conditions: ['Gallbladder Stones (Cholelithiasis)', 'Inguinal & Ventral Hernias', 'Appendicitis', 'Abdominal Pain of Unknown Cause', 'Hiatal Hernia & GERD', 'Bowel Obstructions', 'Diagnostic Uncertainty Requiring Exploration'],
+    symptoms: ['Right upper abdominal pain after meals', 'Groin bulge that appears on standing or coughing', 'Severe central/right lower abdominal pain', 'Chronic abdominal pain without clear diagnosis', 'Persistent heartburn unresponsive to medication'],
+    whenToConsult: ['Recurrent abdominal pain requiring evaluation', 'Known hernia that is growing or becoming painful', 'Gallstones confirmed on ultrasound', 'Persistent acid reflux despite medication', 'Any undiagnosed abdominal symptom lasting weeks'],
+    treatments: [
+      { title: 'Laparoscopic Cholecystectomy', desc: 'Removal of the gallbladder through 3-4 small incisions. The gold standard for gallstone treatment, typically completed in under an hour with same-day discharge.' },
+      { title: 'Laparoscopic Hernia Repair', desc: 'Mesh-based hernia repair using minimally invasive technique with excellent long-term results.' },
+      { title: 'Laparoscopic Appendectomy', desc: 'Emergency or elective removal of the appendix through keyhole incisions, offering faster recovery than traditional open surgery.' },
+      { title: 'Diagnostic Laparoscopy', desc: 'A minimally invasive exploratory procedure to diagnose unexplained abdominal pain or assess disease extent.' },
+    ],
+    faqs: [
+      { q: 'What makes laparoscopic surgery different from open surgery?', a: 'Laparoscopic surgery uses 3-4 small incisions (5-10mm) instead of one large cut. Benefits include less pain, smaller scars, shorter hospital stay, and faster recovery.' },
+      { q: 'Can all hernias be repaired laparoscopically?', a: 'Most hernias can be repaired laparoscopically. Very large or complex recurrent hernias may sometimes require open surgery.' },
+      { q: 'Is laparoscopic gallbladder surgery safe?', a: 'Yes, laparoscopic cholecystectomy is one of the most commonly performed procedures worldwide with an excellent safety record.' },
+      { q: 'How soon can I go home after laparoscopic surgery?', a: 'Most laparoscopic procedures at SR3 allow same-day or next-day discharge. Gallbladder and appendix patients typically go home within 24 hours.' },
+      { q: 'Will I have visible scars?', a: 'Incisions are typically 5-10mm and placed strategically. Over time, these tiny scars fade significantly and become barely noticeable.' },
+    ],
+    seoTitle: 'Laparoscopic Surgeon in Lucknow | Keyhole Surgery Specialist | SR3 ENT & Surgical Centre',
+    seoDescription: 'Best laparoscopic surgeon in Lucknow. Dr. R.K. Vishwakarma (FIAGES, DIPMAS) specializes in minimally invasive hernia repair, gallbladder surgery & appendectomy. Book: +91 9369643922.',
+    seoKeywords: 'laparoscopic surgeon in Lucknow, keyhole surgery Lucknow, minimally invasive surgery Lucknow, laparoscopic hernia repair Lucknow, laparoscopic gallbladder surgery Lucknow',
+    slug: 'laparoscopic-surgery',
+    doctorIndex: 1,
+  },
+  gynecology: {
+    heroDesc: 'Compassionate women\'s healthcare in Lucknow — from prenatal care and delivery to gynecological surgery, with confidentiality and respect at every step.',
+    aboutDesc: 'Our gynecology department provides complete women\'s healthcare at every stage of life. Dr. Madhu Agrawal brings experience and genuine compassion to every consultation, offering routine gynecological care, obstetric services, fertility counseling, and advanced surgical procedures in a private, comfortable setting.',
+    benefits: ['Comprehensive care from puberty through menopause', 'Private and confidential consultations', 'Normal delivery and C-section expertise', 'Fertility counseling and support', 'Prenatal and postnatal care programs', 'Minimally invasive gynecological surgery options'],
+    conditions: ['Pregnancy & Prenatal Care', 'PCOS & Hormonal Disorders', 'Menstrual Irregularities', 'Uterine Fibroids', 'Endometriosis', 'Infertility & Fertility Issues', 'Cervical Abnormalities', 'Menopause-Related Conditions', 'Urinary Incontinence'],
+    symptoms: ['Irregular or missed periods', 'Severe menstrual pain or heavy bleeding', 'Difficulty conceiving after 12+ months', 'Pelvic pain or pressure', 'Unusual vaginal discharge or bleeding', 'Hot flashes and night sweats'],
+    whenToConsult: ['Missed period or positive pregnancy test', 'Persistent pelvic or lower abdominal pain', 'Irregular periods for 3+ consecutive months', 'Difficulty conceiving', 'Any post-menopausal bleeding', 'Need for annual well-woman check-up'],
+    treatments: [
+      { title: 'Obstetric Care & Delivery', desc: 'Complete prenatal monitoring, normal delivery, and C-section services with personalized birth planning and continuous support.' },
+      { title: 'Gynecological Surgery', desc: 'Minimally invasive and open surgical procedures for fibroids, ovarian cysts, endometriosis, and other conditions.' },
+      { title: 'PCOS & Menstrual Disorder Management', desc: 'Comprehensive evaluation and personalized treatment plans combining medication, lifestyle guidance, and when needed, surgical intervention.' },
+      { title: 'Fertility Consultation', desc: 'Thorough fertility assessment, ovulation monitoring, and counseling to help you understand your options.' },
+    ],
+    faqs: [
+      { q: 'When should I start prenatal check-ups?', a: 'Schedule your first visit as soon as you confirm your pregnancy, ideally before 8 weeks. Early check-ups help establish a care plan and ensure the healthiest start.' },
+      { q: 'How is PCOS diagnosed and treated?', a: 'PCOS is diagnosed through clinical symptoms, hormone tests, and ultrasound. Treatment includes lifestyle modifications, hormonal medications, and fertility treatments when needed.' },
+      { q: 'Do you perform both normal and C-section deliveries?', a: 'Yes. The approach depends on your health, baby\'s position, and any complications. We prioritize the safest option for you and your baby.' },
+      { q: 'What should I expect during a gynecological check-up?', a: 'A routine check-up includes medical history review, physical examination, and if needed, a Pap smear or ultrasound. Dr. Agrawal ensures a comfortable, respectful experience.' },
+      { q: 'Is menopause something that needs medical management?', a: 'Severe symptoms like hot flashes, mood changes, and bone density loss may benefit from medical management. Dr. Agrawal can guide you through this transition safely.' },
+    ],
+    seoTitle: 'Gynecologist in Lucknow | Women\'s Health & Obstetric Care | SR3 ENT & Surgical Centre',
+    seoDescription: 'Best gynecologist in Lucknow. Dr. Madhu Agrawal provides expert obstetric care, PCOS treatment, fertility counseling & gynecological surgery. Book: +91 9369643922.',
+    seoKeywords: 'gynecologist in Lucknow, obstetrician Lucknow, PCOS treatment Lucknow, pregnancy doctor Lucknow, fertility specialist Lucknow, women\'s health Lucknow, prenatal care Lucknow',
+    slug: 'gynecology',
+    doctorIndex: 2,
+  },
+  physiotherapy: {
+    heroDesc: 'Expert physiotherapy and rehabilitation in Lucknow — personalized recovery programs to restore mobility, reduce pain, and get you back to your best.',
+    aboutDesc: 'Our physiotherapy department provides evidence-based rehabilitation programs designed around your specific needs. Dr. Leena Verma combines hands-on therapy, modern equipment, and personalized exercise programs to help you recover from surgery, manage chronic pain, overcome sports injuries, and regain mobility for daily life.',
+    benefits: ['One-on-one personalized treatment sessions', 'Evidence-based therapeutic techniques', 'Post-surgical rehabilitation expertise', 'Sports injury recovery programs', 'Chronic pain management strategies', 'Home exercise programs for continued recovery'],
+    conditions: ['Post-Surgical Recovery', 'Back & Neck Pain', 'Sports Injuries', 'Joint Pain & Arthritis', 'Post-Fracture Rehabilitation', 'Neurological Conditions', 'Shoulder & Knee Injuries', 'Chronic Pain Syndromes', 'Geriatric Mobility Issues'],
+    symptoms: ['Pain or stiffness limiting daily activities', 'Weakness after surgery or injury', 'Recurrent sports injuries', 'Chronic back or neck pain', 'Reduced range of motion in joints', 'Difficulty walking or climbing stairs'],
+    whenToConsult: ['After any surgical procedure for rehabilitation', 'Pain lasting more than 2 weeks without improvement', 'Difficulty performing daily activities due to stiffness', 'Following a sports injury or fracture', 'Chronic joint or spine pain affecting quality of life'],
+    treatments: [
+      { title: 'Post-Surgical Rehabilitation', desc: 'Structured recovery programs after orthopedic, spinal, or other surgeries to restore strength, range of motion, and function.' },
+      { title: 'Orthopedic Physiotherapy', desc: 'Treatment for musculoskeletal conditions including back pain, neck pain, joint problems, and post-fracture rehabilitation.' },
+      { title: 'Sports Injury Recovery', desc: 'Specialized programs for athletes and active individuals to recover from injuries and return to sport safely.' },
+      { title: 'Electrotherapy & Pain Management', desc: 'Modern modalities including ultrasound therapy, TENS, and interferential therapy combined with manual techniques.' },
+    ],
+    faqs: [
+      { q: 'How many physiotherapy sessions will I need?', a: 'It depends on your condition. Acute issues may need 4-6 sessions, while chronic or post-surgical conditions may require 8-12+. Dr. Verma will outline a clear plan at your first visit.' },
+      { q: 'Is physiotherapy painful?', a: 'Some discomfort may occur when working on injured or stiff areas. Dr. Verma always works within your comfort level and adjusts techniques accordingly.' },
+      { q: 'Can physiotherapy help with chronic back pain?', a: 'Yes, physiotherapy is one of the most effective treatments for chronic back pain. Manual therapy, targeted exercises, posture correction, and lifestyle modifications can significantly reduce pain.' },
+      { q: 'Do I need a doctor\'s referral?', a: 'A referral is not mandatory, but can be helpful after surgery. You can directly book a consultation with Dr. Verma for assessment.' },
+      { q: 'What should I wear to a session?', a: 'Wear comfortable, loose-fitting clothing that allows easy access to the area being treated. Shorts for lower body, sleeveless top for upper body.' },
+    ],
+    seoTitle: 'Physiotherapist in Lucknow | Rehabilitation & Pain Management | SR3 ENT & Surgical Centre',
+    seoDescription: 'Expert physiotherapist in Lucknow. Dr. Leena Verma provides post-surgical rehab, sports injury recovery, back pain treatment & chronic pain management. Book: +91 9369643922.',
+    seoKeywords: 'physiotherapist in Lucknow, physiotherapy Lucknow, back pain treatment Lucknow, sports injury rehabilitation Lucknow, post-surgical rehab Lucknow, knee pain treatment Lucknow',
+    slug: 'physiotherapy',
+    doctorIndex: 3,
+  },
+  'diet-consultation': {
+    heroDesc: 'Scientific nutrition guidance in Lucknow — personalized diet plans from a PhD-qualified dietitian for weight management, therapeutic needs, and lasting wellness.',
+    aboutDesc: 'Our diet consultation service provides science-backed, personalized nutrition guidance. Dr. Induja Dixit, with MSc and PhD credentials, creates realistic and sustainable nutrition plans — no crash diets, no one-size-fits-all approaches. Whether managing PCOS, diabetes, or simply wanting to eat better, you\'ll receive expert guidance designed for real results.',
+    benefits: ['PhD-qualified consultant dietitian', 'Personalized plans based on medical history and lifestyle', 'Science-backed — no fad diets or crash programs', 'Condition-specific therapeutic diets', 'Regular monitoring and plan adjustments', 'Practical, sustainable dietary changes'],
+    conditions: ['Weight Management (Loss & Gain)', 'PCOS & Hormonal Nutrition', 'Diabetes & Pre-Diabetes', 'Thyroid Disorders', 'Cardiac Health', 'Renal (Kidney) Disease', 'Digestive Issues & Gut Health', 'Pediatric Nutrition', 'Pregnancy & Lactation', 'Sports Nutrition'],
+    symptoms: ['Unexplained weight gain or difficulty losing weight', 'Irregular periods potentially linked to PCOS', 'Elevated blood sugar or HbA1c levels', 'Persistent bloating or digestive discomfort', 'Fatigue despite adequate sleep', 'Poor appetite or unhealthy eating patterns'],
+    whenToConsult: ['Struggling to lose or gain weight despite efforts', 'Recently diagnosed with diabetes, PCOS, or thyroid disorder', 'Need dietary management for cardiac or renal condition', 'Wanting to optimize nutrition during pregnancy', 'Desire to build sustainable healthy eating habits'],
+    treatments: [
+      { title: 'Weight Management Programs', desc: 'Personalized calorie and macro plans with realistic targets, regular monitoring, and progressive adjustments for sustainable results.' },
+      { title: 'Therapeutic Diets', desc: 'Condition-specific nutrition plans for diabetes, PCOS, thyroid, cardiac, and renal conditions designed to complement your medical treatment.' },
+      { title: 'Gut Health & Detox Programs', desc: 'Targeted plans to restore gut microbiome balance, reduce inflammation, and improve digestive health.' },
+      { title: 'Lifestyle Modification Coaching', desc: 'Comprehensive guidance on building healthy eating habits, meal planning, and sustainable dietary changes.' },
+    ],
+    faqs: [
+      { q: 'How is a dietitian different from a nutritionist?', a: 'A registered dietitian has formal clinical training and can provide medical nutrition therapy for conditions like diabetes and PCOS. Dr. Dixit\'s PhD qualification ensures evidence-based, clinically sound advice.' },
+      { q: 'Will I have to give up foods I enjoy?', a: 'No. Dr. Dixit creates balanced plans that include your favorite foods in appropriate portions. The goal is sustainable change, not deprivation.' },
+      { q: 'Can diet really help manage PCOS?', a: 'Absolutely. Dietary changes are a first-line treatment for PCOS. Proper nutrition can regulate insulin levels, reduce androgen production, and improve menstrual regularity.' },
+      { q: 'How long before I see results?', a: 'For weight management, realistic results are 2-4 kg per month. For therapeutic diets, improvements in blood markers can be seen within 4-8 weeks.' },
+      { q: 'Do you provide meal plans or just guidelines?', a: 'Dr. Dixit provides detailed, practical meal plans with specific food recommendations, portion sizes, and timing — including Indian food options that are easy to prepare.' },
+    ],
+    seoTitle: 'Dietitian in Lucknow | Weight Loss, PCOS & Therapeutic Diet Plans | SR3 ENT & Surgical Centre',
+    seoDescription: 'Best dietitian in Lucknow. Dr. Induja Dixit (MSc, PhD) provides personalized diet plans for weight loss, PCOS, diabetes & therapeutic nutrition. Book: +91 9369643922.',
+    seoKeywords: 'dietitian in Lucknow, nutritionist Lucknow, weight loss diet Lucknow, PCOS diet plan Lucknow, diabetic diet Lucknow, therapeutic diet Lucknow, diet consultation Lucknow',
+    slug: 'diet-consultation',
+    doctorIndex: 4,
+  },
+};

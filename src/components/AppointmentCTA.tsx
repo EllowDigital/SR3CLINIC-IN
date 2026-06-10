@@ -1,4 +1,5 @@
 import { CalendarCheck, Phone, ArrowRight, Clock, Shield, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import { CLINIC } from '../data/clinic';
 
@@ -73,18 +74,19 @@ export default function AppointmentCTA() {
             >
               <Phone size={20} /> Call: {CLINIC.phone1}
             </a>
-            <a href="#appointment-form" style={{
+            <Link to="/appointment" style={{
               display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
               padding: '16px var(--space-8)', borderRadius: 'var(--radius-full)',
               background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)',
               color: 'var(--neutral-100)', fontSize: 'var(--text-lg)', fontWeight: 500,
               fontFamily: 'var(--font-accent)', transition: 'all var(--transition-base)',
+              textDecoration: 'none',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; }}
             >
               Book Online <ArrowRight size={18} />
-            </a>
+            </Link>
           </div>
 
           {/* Trust row */}

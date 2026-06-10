@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sr3entandsurgicalcentre.com/sitemap.xml
+
+# Block admin or private paths (none for this site)
+Disallow: /api/

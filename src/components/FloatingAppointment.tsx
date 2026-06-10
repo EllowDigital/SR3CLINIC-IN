@@ -1,140 +1,206 @@
-import { CalendarCheck, X } from 'lucide-react';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { CalendarCheck, X, Phone, MessageCircle, MapPin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CLINIC } from '../data/clinic';
 
 export default function FloatingAppointment() {
   const [expanded, setExpanded] = useState(false);
+  const [pulse, setPulse] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
+  const waNumber = CLINIC.phone1.replace(/[^\d]/g, '');
+
+  // Stop pulse after first open
+  useEffect(() => {
+    if (expanded) setPulse(false);
+  }, [expanded]);
+
+  // Close on route change
+  useEffect(() => {
+    setExpanded(false);
+  }, [location.pathname]);
+
+  const options = [
+    {
+      icon: Phone,
+      label: 'Call Us',
+      sublabel: CLINIC.phone1,
+      href: `tel:${CLINIC.phone1.replace(/\s+/g, '')}`,
+      bg: 'linear-gradient(135deg, var(--teal-600), var(--teal-700))',
+      color: '#fff',
+    },
+    {
+      icon: MessageCircle,
+      label: 'WhatsApp',
+      sublabel: 'Chat & book instantly',
+      href: `https://wa.me/${waNumber}?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment.`,
+      bg: 'linear-gradient(135deg, #25d366, #128c7e)',
+      color: '#fff',
+      external: true,
+    },
+    {
+      icon: CalendarCheck,
+      label: 'Online Booking',
+      sublabel: 'Fill appointment form',
+      href: '/appointment',
+      bg: 'linear-gradient(135deg, var(--gold-500), var(--gold-600))',
+      color: 'var(--navy-950)',
+      internal: true,
+    },
+    {
+      icon: MapPin,
+      label: 'Get Directions',
+      sublabel: 'Tiwariganj, Faizabad Rd',
+      href: 'https://maps.google.com/?q=SR3+ENT+Surgical+Centre+Tiwariganj+Faizabad+Road+Lucknow',
+      bg: 'var(--neutral-100)',
+      color: 'var(--navy-800)',
+      external: true,
+    },
+  ];
 
   return (
     <>
-      {/* Floating button */}
-      <button
-        onClick={() => setExpanded(!expanded)}
-        style={{
-          position: 'fixed',
-          bottom: 28,
-          right: 28,
-          zIndex: 900,
-          width: expanded ? 48 : 56,
-          height: expanded ? 48 : 56,
-          borderRadius: 'var(--radius-full)',
-          background: 'linear-gradient(135deg, var(--gold-500), var(--gold-600))',
-          color: 'var(--navy-950)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 4px 20px rgba(230, 168, 23, 0.4)',
-          animation: 'pulse-glow 2.5s ease-in-out infinite',
-          transition: 'all var(--transition-base)',
-          border: 'none',
-        }}
-        aria-label="Book appointment"
-      >
-        {expanded ? <X size={22} /> : <CalendarCheck size={24} />}
-      </button>
+      {/* Backdrop */}
+      {expanded && (
+        <div
+          onClick={() => setExpanded(false)}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 850,
+            background: 'rgba(0,0,0,0.2)',
+            animation: 'fadeIn 0.2s ease-out',
+          }}
+        />
+      )}
 
-      {/* Expanded panel */}
+      {/* Expanded Panel */}
       {expanded && (
         <div style={{
-          position: 'fixed',
-          bottom: 88,
-          right: 28,
-          zIndex: 900,
-          width: 300,
-          borderRadius: 'var(--radius-lg)',
+          position: 'fixed', bottom: 96, right: 24, zIndex: 900,
+          width: 300, borderRadius: 'var(--radius-xl)',
           background: 'var(--neutral-0)',
-          boxShadow: 'var(--shadow-xl)',
+          boxShadow: '0 24px 64px rgba(0,0,0,0.18)',
           border: '1px solid var(--neutral-100)',
           overflow: 'hidden',
-          animation: 'fadeInUp 0.25s ease-out',
+          animation: 'floatPanelIn 0.35s cubic-bezier(0.34,1.56,0.64,1)',
         }}>
+          {/* Header */}
           <div style={{
             padding: 'var(--space-5) var(--space-6)',
-            background: 'linear-gradient(135deg, var(--navy-800), var(--navy-900))',
-            color: 'var(--neutral-0)',
+            background: 'linear-gradient(135deg, var(--navy-900), var(--navy-800))',
+            position: 'relative', overflow: 'hidden',
           }}>
+            <div style={{ position: 'absolute', top: -10, right: -10, width: 80, height: 80, background: 'radial-gradient(circle, rgba(230,168,23,0.15) 0%, transparent 70%)' }} />
             <div style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: 'var(--text-lg)',
-              fontWeight: 600,
-              marginBottom: 'var(--space-1)',
+              fontFamily: 'var(--font-heading)', fontSize: 'var(--text-lg)',
+              fontWeight: 600, color: 'var(--neutral-0)',
+              marginBottom: 'var(--space-1)', position: 'relative', zIndex: 1,
             }}>
               Book Appointment
             </div>
             <div style={{
-              fontSize: 'var(--text-xs)',
-              fontFamily: 'var(--font-accent)',
-              color: 'rgba(255,255,255,0.6)',
+              fontSize: 'var(--text-xs)', fontFamily: 'var(--font-accent)',
+              color: 'rgba(255,255,255,0.5)', position: 'relative', zIndex: 1,
             }}>
-              Quick & easy scheduling
+              Choose how you'd like to connect
             </div>
           </div>
 
-          <div style={{ padding: 'var(--space-5) var(--space-6)' }}>
-            {[
-              { label: 'Call Us', sublabel: 'Speak directly', href: `tel:${CLINIC.phone1.replace(/\s+/g, '')}`, primary: true },
-              { label: 'WhatsApp', sublabel: 'Chat & book', href: `https://wa.me/${CLINIC.phone1.replace(/[^\d]/g, '')}`, primary: false },
-              { label: 'Online Form', sublabel: 'Fill details', href: '/appointment', primary: false, internal: true },
-            ].map((option) => (
+          {/* Options */}
+          <div style={{ padding: 'var(--space-4)' }}>
+            {options.map((opt) => (
               <a
-                key={option.label}
-                href={option.internal ? undefined : option.href}
-                target={option.href.startsWith('http') ? '_blank' : undefined}
-                rel={option.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                onClick={() => { setExpanded(false); if (option.internal) navigate(option.href); }}
+                key={opt.label}
+                href={opt.internal ? undefined : opt.href}
+                target={opt.external ? '_blank' : undefined}
+                rel={opt.external ? 'noopener noreferrer' : undefined}
+                onClick={() => {
+                  setExpanded(false);
+                  if (opt.internal) navigate(opt.href);
+                }}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
+                  display: 'flex', alignItems: 'center', gap: 'var(--space-3)',
                   padding: 'var(--space-3) var(--space-4)',
                   borderRadius: 'var(--radius-md)',
-                  background: option.primary ? 'linear-gradient(135deg, var(--gold-500), var(--gold-600))' : 'var(--neutral-50)',
-                  color: option.primary ? 'var(--navy-950)' : 'var(--navy-800)',
+                  background: opt.bg,
+                  color: opt.color,
                   marginBottom: 'var(--space-2)',
                   textDecoration: 'none',
                   transition: 'all var(--transition-fast)',
-                  border: option.primary ? 'none' : '1px solid var(--neutral-100)',
+                  cursor: 'pointer',
                 }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = 'scale(1.02)';
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = 'translateX(3px)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
                 }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = 'scale(1)';
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = 'translateX(0)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <div>
-                  <div style={{
-                    fontFamily: 'var(--font-accent)',
-                    fontSize: 'var(--text-sm)',
-                    fontWeight: 600,
-                  }}>
-                    {option.label}
+                <div style={{
+                  width: 36, height: 36, borderRadius: 'var(--radius-md)',
+                  background: 'rgba(255,255,255,0.18)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <opt.icon size={17} />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: 'var(--font-accent)', fontSize: 'var(--text-sm)', fontWeight: 600 }}>
+                    {opt.label}
                   </div>
-                  <div style={{
-                    fontSize: 'var(--text-xs)',
-                    opacity: 0.65,
-                    fontFamily: 'var(--font-accent)',
-                  }}>
-                    {option.sublabel}
+                  <div style={{ fontSize: 'var(--text-xs)', opacity: 0.7, fontFamily: 'var(--font-accent)' }}>
+                    {opt.sublabel}
                   </div>
                 </div>
-                <CalendarCheck size={16} style={{ opacity: 0.6 }} />
               </a>
             ))}
+          </div>
+
+          {/* Footer note */}
+          <div style={{
+            padding: 'var(--space-3) var(--space-6)',
+            background: 'var(--neutral-50)',
+            borderTop: '1px solid var(--neutral-100)',
+          }}>
+            <p style={{ fontSize: 10, fontFamily: 'var(--font-accent)', color: 'var(--neutral-400)', textAlign: 'center' }}>
+              Same-day appointments available • 24/7 Emergency
+            </p>
           </div>
         </div>
       )}
 
+      {/* FAB */}
+      <button
+        onClick={() => setExpanded(!expanded)}
+        aria-label="Book appointment"
+        style={{
+          position: 'fixed', bottom: 24, right: 24,
+          zIndex: 900, width: 56, height: 56,
+          borderRadius: 'var(--radius-full)',
+          background: expanded
+            ? 'var(--navy-800)'
+            : 'linear-gradient(135deg, var(--gold-500), var(--gold-600))',
+          color: expanded ? 'var(--neutral-0)' : 'var(--navy-950)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: expanded ? '0 4px 20px rgba(15,30,61,0.3)' : '0 4px 20px rgba(230,168,23,0.45)',
+          animation: pulse && !expanded ? 'pulse-glow 2.5s ease-in-out infinite' : 'none',
+          transition: 'all var(--transition-spring)',
+          border: 'none',
+          transform: expanded ? 'rotate(45deg)' : 'rotate(0deg)',
+        }}
+      >
+        {expanded ? <X size={22} /> : <CalendarCheck size={24} />}
+      </button>
+
       <style>{`
+        @keyframes floatPanelIn {
+          from { opacity: 0; transform: scale(0.85) translateY(16px); transform-origin: bottom right; }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
         @media (max-width: 768px) {
-          button[aria-label="Book appointment"] {
-            bottom: 20px !important;
-            right: 20px !important;
-            width: 50px !important;
-            height: 50px !important;
-          }
+          button[aria-label="Book appointment"] { bottom: 80px !important; right: 16px !important; }
+          div[style*="bottom: 96px"] { bottom: 148px !important; right: 16px !important; }
         }
       `}</style>
     </>
