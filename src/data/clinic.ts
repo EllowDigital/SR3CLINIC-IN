@@ -32,7 +32,7 @@ export const DOCTORS = [
     qualifications: 'MBBS, DLO',
     speciality: 'ENT Specialist',
     registration: '56440',
-    image: 'https://images.pexels.com/photos/5452268/pexels-photo-5452268.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://images.pexels.com/photos/37476751/pexels-photo-37476751.jpeg?auto=compress&cs=tinysrgb&w=400',
     expertise: [
       'Endoscopic Sinus Surgery',
       'Tonsillectomy & Adenoidectomy',
@@ -47,7 +47,7 @@ export const DOCTORS = [
     qualifications: 'MBBS, MS, FIAGES, DIPMAS, FISCP',
     speciality: 'General & Laparoscopic Surgeon',
     registration: '55922',
-    image: 'https://images.pexels.com/photos/5377589/pexels-photo-5377589.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://images.pexels.com/photos/5867737/pexels-photo-5867737.jpeg?auto=compress&cs=tinysrgb&w=400',
     expertise: [
       'Laparoscopic Hernia Repair',
       'Laparoscopic Cholecystectomy',
@@ -62,7 +62,7 @@ export const DOCTORS = [
     qualifications: 'MBBS',
     speciality: 'OBS & Gynecology',
     registration: '45480',
-    image: 'https://images.pexels.com/photos/5217856/pexels-photo-5217856.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://images.pexels.com/photos/37476751/pexels-photo-37476751.jpeg?auto=compress&cs=tinysrgb&w=400',
     expertise: [
       'Obstetric Care & Delivery',
       'Gynecological Surgery',
@@ -77,7 +77,7 @@ export const DOCTORS = [
     qualifications: 'Physiotherapist',
     speciality: 'Physiotherapy & Rehabilitation',
     registration: '16731',
-    image: 'https://images.pexels.com/photos/5214952/pexels-photo-5214952.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://images.pexels.com/photos/37476751/pexels-photo-37476751.jpeg?auto=compress&cs=tinysrgb&w=400',
     expertise: [
       'Post-Surgical Rehabilitation',
       'Orthopedic Physiotherapy',
@@ -92,7 +92,7 @@ export const DOCTORS = [
     qualifications: 'MSc, PhD',
     speciality: 'Consultant Dietitian',
     registration: '',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://images.pexels.com/photos/37476751/pexels-photo-37476751.jpeg?auto=compress&cs=tinysrgb&w=400',
     expertise: [
       'Weight Management',
       'Therapeutic Diets',
