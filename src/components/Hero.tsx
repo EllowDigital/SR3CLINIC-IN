@@ -6,20 +6,20 @@ import { CLINIC } from '../data/clinic';
 
 const slides = [
   {
-    image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'Modern hospital corridor with warm lighting',
+    image: 'https://images.pexels.com/photos/5867737/pexels-photo-5867737.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Experienced doctor smiling confidently',
   },
   {
-    image: 'https://images.pexels.com/photos/668296/pexels-photo-668296.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'Doctor consulting with patient',
+    image: 'https://images.pexels.com/photos/5214958/pexels-photo-5214958.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Female doctor using digital tablet',
   },
   {
-    image: 'https://images.pexels.com/photos/4056824/pexels-photo-4056824.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'Medical team in surgical preparation',
+    image: 'https://images.pexels.com/photos/8376233/pexels-photo-8376233.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Medical team providing patient care',
   },
   {
-    image: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    alt: 'State of the art medical equipment',
+    image: 'https://images.pexels.com/photos/7088484/pexels-photo-7088484.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Modern hospital interior and facilities',
   },
 ];
 

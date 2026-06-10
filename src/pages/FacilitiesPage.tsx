@@ -16,9 +16,9 @@ const facilityHighlights = [
 ];
 
 const consultationRooms = [
-  { title: 'ENT Consultation Suite', desc: 'Sound-proofed rooms with audiometric testing capability and endoscopic examination stations. Designed for patient comfort and clinical precision.', image: 'https://images.pexels.com/photos/6533326/pexels-photo-6533326.jpeg?auto=compress&cs=tinysrgb&w=600' },
-  { title: 'Surgical Consultation Room', desc: 'Private consultation space with anatomical models and digital imaging displays. Dr. Vishwakarma uses visual aids to explain procedures clearly.', image: 'https://images.pexels.com/photos/4056824/pexels-photo-4056824.jpeg?auto=compress&cs=tinysrgb&w=600' },
-  { title: "Women's Health Room", desc: 'A private, calming space for gynecological consultations with built-in ultrasound access. Designed for discretion and comfort.', image: 'https://images.pexels.com/photos/668296/pexels-photo-668296.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { title: 'ENT Consultation Suite', desc: 'Sound-proofed rooms with audiometric testing capability and endoscopic examination stations. Designed for patient comfort and clinical precision.', image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { title: 'Surgical Consultation Room', desc: 'Private consultation space with anatomical models and digital imaging displays. Dr. Vishwakarma uses visual aids to explain procedures clearly.', image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  { title: "Women's Health Room", desc: 'A private, calming space for gynecological consultations with built-in ultrasound access. Designed for discretion and comfort.', image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600' },
 ];
 
 const diagnosticFacilities = [
@@ -59,11 +59,11 @@ const whyChoosePoints = [
 
 const galleryImages = [
   { src: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Modern hospital corridor' },
-  { src: 'https://images.pexels.com/photos/4056824/pexels-photo-4056824.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Advanced surgical equipment' },
-  { src: 'https://images.pexels.com/photos/6533326/pexels-photo-6533326.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Doctor consultation room' },
+  { src: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Advanced surgical equipment' },
+  { src: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Doctor consultation room' },
   { src: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Medical diagnostic equipment' },
-  { src: 'https://images.pexels.com/photos/668296/pexels-photo-668296.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Patient care area' },
-  { src: 'https://images.pexels.com/photos/3346136/pexels-photo-3346136.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Modern medical facility' },
+  { src: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Patient care area' },
+  { src: 'https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=800', alt: 'Modern medical facility' },
 ];
 
 const journeySteps = [
@@ -222,9 +222,7 @@ export default function FacilitiesPage() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-10)', opacity: consultInView ? 1 : 0, transform: consultInView ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.7s ease-out' }}>
             <span className="section-label">Consultation Spaces</span>
-            <h2 id="consult-heading" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, color: 'var(--navy-900)' }}>
-              Modern Consultation Rooms
-            </h2>
+
             <div className="divider divider-center" />
             <p style={{ fontSize: 'var(--text-base)', color: 'var(--neutral-500)', maxWidth: 560, margin: 'var(--space-4) auto 0', lineHeight: 'var(--leading-relaxed)' }}>
               Private, well-equipped spaces where your specialist can evaluate, explain, and plan your treatment with clarity and care.
