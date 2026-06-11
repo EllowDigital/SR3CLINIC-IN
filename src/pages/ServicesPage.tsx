@@ -1,4 +1,4 @@
-import { CheckCircle, Phone, Calendar, ArrowRight, Star, Clock, Users, Shield } from 'lucide-react';
+import { CircleCheck as CheckCircle, Phone, Calendar, ArrowRight, Star, Clock, Users, Shield } from 'lucide-react';
 import { Ear, ScissorsLineDashed, Monitor, Baby, Activity, Apple } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import { useSEO, breadcrumbSchema } from '../hooks/useSEO';
