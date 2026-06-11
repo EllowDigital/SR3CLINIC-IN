@@ -57,8 +57,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top bar */}
-      <div style={{
+      {/* Top bar - Hidden on mobile */}
+      <div className="nav-top-bar" style={{
         background: 'var(--navy-950)',
         color: 'var(--neutral-300)',
         fontSize: 'var(--text-xs)',
@@ -73,22 +73,25 @@ export default function Navbar() {
           justifyContent: 'space-between',
           alignItems: 'center',
           height: 36,
-          padding: '0 var(--space-6)',
+          flexWrap: 'wrap',
+          gap: 'var(--space-2)',
         }}>
-          <div style={{ display: 'flex', gap: 'var(--space-6)', alignItems: 'center' }}>
-            <span style={{ opacity: 0.8 }}>{CLINIC.hours.weekday}</span>
-            <span style={{ opacity: 0.5 }}>|</span>
-            <span style={{ opacity: 0.8 }}>{CLINIC.address.city}, {CLINIC.address.state}</span>
+          <div style={{ display: 'flex', gap: 'clamp(var(--space-2), 2vw, var(--space-6))', alignItems: 'center', flexWrap: 'wrap', fontSize: 'clamp(10px, 2vw, var(--text-xs))' }}>
+            <span style={{ opacity: 0.8, whiteSpace: 'nowrap' }}>{CLINIC.hours.weekday}</span>
+            <span style={{ opacity: 0.5, display: 'none' }} className="nav-top-divider">|</span>
+            <span style={{ opacity: 0.8, whiteSpace: 'nowrap' }} className="nav-top-location">{CLINIC.address.city}</span>
           </div>
           <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 'var(--space-2)',
+            gap: 'var(--space-1)',
             color: 'var(--gold-400)',
             fontWeight: 500,
+            whiteSpace: 'nowrap',
+            fontSize: 'clamp(10px, 2vw, var(--text-xs))',
           }}>
             <Phone size={12} />
-            {CLINIC.phone1}
+            <span>{CLINIC.phone1}</span>
           </a>
         </div>
       </div>
@@ -117,36 +120,36 @@ export default function Navbar() {
           transition: 'height var(--transition-base)',
         }}>
           {/* Logo */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', textDecoration: 'none' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(var(--space-2), 2vw, var(--space-3))', textDecoration: 'none', flexShrink: 0 }}>
             <img
               src="/sr3clinic.jpeg"
               alt="SR3 Logo"
               style={{
-                width: isScrolled ? 38 : 46,
-                height: isScrolled ? 38 : 46,
+                width: 'clamp(36px, 8vw, 46px)',
+                height: 'clamp(36px, 8vw, 46px)',
                 borderRadius: 'var(--radius-md)',
                 objectFit: 'cover',
                 transition: 'all var(--transition-base)',
               }}
             />
-            <div>
+            <div style={{ minWidth: 0 }}>
               <div style={{
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 700,
-                fontSize: isScrolled ? 'var(--text-sm)' : 'var(--text-base)',
+                fontSize: 'clamp(var(--text-sm), 2.5vw, var(--text-base))',
                 color: 'var(--navy-900)',
                 lineHeight: 1.2,
-                transition: 'font-size var(--transition-base)',
                 letterSpacing: '-0.01em',
+                whiteSpace: 'nowrap',
               }}>
                 SR³ ENT & Surgical
               </div>
               <div style={{
                 fontFamily: 'var(--font-accent)',
-                fontSize: 'var(--text-xs)',
+                fontSize: 'clamp(9px, 1.5vw, var(--text-xs))',
                 color: 'var(--gold-600)',
                 fontWeight: 600,
-                letterSpacing: '0.15em',
+                letterSpacing: '0.1em',
                 textTransform: 'uppercase',
                 lineHeight: 1,
                 marginTop: 2,
@@ -392,15 +395,40 @@ export default function Navbar() {
         .nav-cta-desktop {
           display: inline-flex !important;
         }
+        .nav-top-bar {
+          display: block;
+        }
+        .nav-top-divider,
+        .nav-top-location {
+          display: inline;
+        }
+
+        /* Tablet */
         @media (max-width: 1024px) {
           .nav-desktop-links {
             display: none !important;
           }
           .nav-mobile-toggle {
             display: flex !important;
+            min-width: 44px !important;
+            min-height: 44px !important;
           }
           .nav-cta-desktop {
             display: none !important;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+          .nav-top-bar {
+            display: none !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          nav .container {
+            padding-left: var(--space-3) !important;
+            padding-right: var(--space-3) !important;
           }
         }
       `}</style>

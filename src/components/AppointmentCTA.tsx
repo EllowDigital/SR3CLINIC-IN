@@ -1,10 +1,12 @@
-import { CalendarCheck, Phone, ArrowRight, Clock, Shield, Award } from 'lucide-react';
+import { CalendarCheck, Phone, ArrowRight, Clock, Shield, Award, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useInView } from '../hooks/useInView';
 import { CLINIC } from '../data/clinic';
 
 export default function AppointmentCTA() {
   const { ref, isInView } = useInView(0.15);
+
+  const waNumber = CLINIC.phone1.replace(/[^\d]/g, '');
 
   return (
     <section ref={ref} id="appointment" style={{
@@ -21,7 +23,7 @@ export default function AppointmentCTA() {
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div style={{
-          maxWidth: 720, margin: '0 auto', textAlign: 'center',
+          maxWidth: 800, margin: '0 auto', textAlign: 'center',
           opacity: isInView ? 1 : 0, transform: isInView ? 'translateY(0)' : 'translateY(24px)',
           transition: 'all 0.8s ease-out',
         }}>
@@ -58,9 +60,10 @@ export default function AppointmentCTA() {
             Take the first step towards better health. Our specialists are ready to provide the care you deserve.
           </p>
 
-          {/* Dual CTA */}
+          {/* Triple CTA */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-10)' }}>
-            <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
+            {/* Book Online - Primary */}
+            <Link to="/appointment" style={{
               display: 'inline-flex', alignItems: 'center', gap: 'var(--space-3)',
               padding: '16px var(--space-8)', borderRadius: 'var(--radius-full)',
               background: 'linear-gradient(135deg, var(--gold-500), var(--gold-600))',
@@ -68,14 +71,17 @@ export default function AppointmentCTA() {
               fontFamily: 'var(--font-accent)', letterSpacing: '0.01em',
               boxShadow: '0 4px 24px rgba(230,168,23,0.35)',
               transition: 'all var(--transition-base)',
+              textDecoration: 'none',
             }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(230,168,23,0.45)'; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(230,168,23,0.5)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(230,168,23,0.35)'; }}
             >
-              <Phone size={20} /> Call: {CLINIC.phone1}
-            </a>
-            <Link to="/appointment" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+              <CalendarCheck size={20} /> Book Online <ArrowRight size={16} />
+            </Link>
+
+            {/* Call */}
+            <a href={`tel:${CLINIC.phone1.replace(/\s+/g, '')}`} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-3)',
               padding: '16px var(--space-8)', borderRadius: 'var(--radius-full)',
               background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)',
               color: 'var(--neutral-100)', fontSize: 'var(--text-lg)', fontWeight: 500,
@@ -85,8 +91,23 @@ export default function AppointmentCTA() {
             onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; }}
             >
-              Book Online <ArrowRight size={18} />
-            </Link>
+              <Phone size={20} /> Call Us
+            </a>
+
+            {/* WhatsApp */}
+            <a href={`https://wa.me/${waNumber}?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20SR3%20ENT%20%26%20Surgical%20Centre.`} target="_blank" rel="noopener noreferrer" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-3)',
+              padding: '16px var(--space-8)', borderRadius: 'var(--radius-full)',
+              background: 'rgba(37,211,102,0.1)', border: '1px solid rgba(37,211,102,0.25)',
+              color: '#25d366', fontSize: 'var(--text-lg)', fontWeight: 500,
+              fontFamily: 'var(--font-accent)', transition: 'all var(--transition-base)',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(37,211,102,0.18)'; e.currentTarget.style.borderColor = 'rgba(37,211,102,0.4)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(37,211,102,0.1)'; e.currentTarget.style.borderColor = 'rgba(37,211,102,0.25)'; }}
+            >
+              <MessageCircle size={20} /> WhatsApp
+            </a>
           </div>
 
           {/* Trust row */}
