@@ -21,6 +21,10 @@ const slides = [
     image: 'https://images.pexels.com/photos/7088484/pexels-photo-7088484.jpeg?auto=compress&cs=tinysrgb&w=1920',
     alt: 'Modern hospital interior and facilities',
   },
+    {
+    image: 'https://images.pexels.com/photos/7088484/pexels-photo-7088484.jpeg?auto=compress&cs=tinysrgb&w=1920',
+    alt: 'Modern hospital interior and facilities',
+  }
 ];
 
 export default function Hero() {
